@@ -1,0 +1,2 @@
+module SolarbenefitsHelper
+end

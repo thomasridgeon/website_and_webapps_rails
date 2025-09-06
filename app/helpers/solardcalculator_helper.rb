@@ -1,0 +1,2 @@
+module SolardcalculatorHelper
+end
