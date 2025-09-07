@@ -1,7 +1,7 @@
 class Journal::SessionsController < ApplicationController
   # GET /journal/login
   def new
-    render html: LoginPage.new.to_html.html_safe
+    render html: Login.new.to_html.html_safe
   end
 
   # POST /journal/login

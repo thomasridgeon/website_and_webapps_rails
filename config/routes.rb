@@ -4,17 +4,13 @@ Rails.application.routes.draw do
   get "/about", to: "aboutme#index"
   get "/projects", to: "projects#index"
   get "/resume", to: "resume#index"
-  get "/sunbenefits", to: "sunbenefits#index"
+  get "/solarbenefits", to: "solarbenefits#index"
 
   # portcharges calculator
   resource :portcharges, only: [ :new, :create ] # resource singular, because it's only the one calculator, and only new and create RESTful routes are needed
-  get "portcharges/new"
-  get "portcharges/create"
 
   # solardcalculator
   resource :solardcalculator, only: [ :new, :create ]
-  get "solardcalculator/new"
-  get "solardcalculator/create"
 
   # journal app
   namespace :journal do
@@ -44,7 +40,6 @@ Rails.application.routes.draw do
     # PATCH/PUT - /journal/notes/:id | notes#update | Update a note
     # DELETE - /journal/notes/:id | notes#destroy | Delete a note
   end
-end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -52,9 +47,10 @@ end
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-# Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-# get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-# get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-# Defines the root path route ("/")
-# root "posts#index"
+  # Defines the root path route ("/")
+  # root "posts#index"
+end

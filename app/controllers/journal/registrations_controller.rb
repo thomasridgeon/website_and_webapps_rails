@@ -1,7 +1,7 @@
 class Journal::RegistrationsController < ApplicationController
   # GET /journal/signup
   def new
-    render html: SignupPage.new.to_html.html_safe
+    render html: Signup.new.to_html.html_safe
   end
 
   # POST /journal/signup

@@ -6,19 +6,19 @@ class Journal::NotesController < ApplicationController
   # GET /journal/notes
   def index
     @notes = current_user.notes
-    render html: NotesPage.new(@notes).to_html.html_safe
+    render html: Notes.new(@notes).to_html.html_safe
   end
 
   # GET /journal/notes/:id
   def show
     key = Base64.decode64(session[:derived_key])
     @plaintext = note.decrypt(key)
-    render html: NotePage.new(@plaintext).to_html.html_safe
+    render html: Note.new(@plaintext).to_html.html_safe
   end
 
   # GET /journal/notes/new
   def new
-    render html: NewNotePage.new.to_html.html_safe
+    render html: NewNote.new.to_html.html_safe
   end
 
   #POST /journal/notes
@@ -33,7 +33,7 @@ class Journal::NotesController < ApplicationController
 
   # GET /journal/notes/:id/edit
   def edit
-    render html: EditNotePage.new(@note).to_html.html_safe
+    render html: EditNote.new(@note).to_html.html_safe
   end
 
   # PATCH/PUT /journal/notes/:id

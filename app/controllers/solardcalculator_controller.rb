@@ -1,6 +1,7 @@
 class SolardcalculatorController < ApplicationController
   OPENUV_API_KEY = ENV["OPENUV_API_KEY"]
   def new
+    render html: SolardCalculator.new.to_html.html_safe
     @uv_index = fetch_uv_index
   end
 
@@ -17,8 +18,7 @@ class SolardcalculatorController < ApplicationController
     calculation = SolardCalculation.new(uv_index: uv_index, age: age, skin_type: skin_type)
     @required_sun_time = calculation.required_sun_time
     @uv_index = uv_index
-
-    render :new
+    render html: SolardCalculator.new(@required_sun_time, @uv_index).to_html.html_safe
   end
 
   private
