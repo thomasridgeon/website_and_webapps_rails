@@ -1,6 +1,3 @@
-require "openssl"
-require "base64"
-
 class Note < ApplicationRecord
   belongs_to :user
   CIPHER_ALGO = "aes-256-gcm"

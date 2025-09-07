@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/sunbenefits", to: "sunbenefits#index"
 
   # portcharges calculator
-  resource :portcharges, only: [ :new, :create ]
+  resource :portcharges, only: [ :new, :create ] # resource singular, because it's only the one calculator, and only new and create RESTful routes are needed
   get "portcharges/new"
   get "portcharges/create"
 
@@ -18,13 +18,31 @@ Rails.application.routes.draw do
 
   # journal app
   namespace :journal do
+    # landing page
+    root to: "landing#index"
+
+    # user signup (registration)
+    get "signup", to: "registrations#new", as: :signup
+    post "signup", to: "registrations#create"
+
+    # login/logout (sessions)
+    get "login", to: "sessions#new", as: :login
+    post "login", to: "sessions#create"
+    delete "logout", to: "sessions#destroy", as: :logout
+
+    # notes (full CRUD)
     resources :notes
-    get "landing/index"
-    get "/signup", to: "registrations#new"
-    post "/signup", to: "registrations#create"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "logout", to: "sessions#destroy"
+    # CRUD stands for the four basic operations you can perform on data: create, read, update and delete)
+    # resources :notes automatically creates 7 RESTful routes for notes.
+
+    # REST is an architectural style for designing web apps. The 7 RESTful routes are:
+    # GET - /journal/notes | notes#index | List all notes (notes dashboard)
+    # GET - /journal/notes/new | notes#new | Show new note form
+    # POST - /journal/notes	notes#create | Create a note
+    # GET - /journal/notes/:id | notes#show | Show a single note
+    # GET - /journal/notes/:id/edit | notes#edit | Edit form for a note
+    # PATCH/PUT - /journal/notes/:id | notes#update | Update a note
+    # DELETE - /journal/notes/:id | notes#destroy | Delete a note
   end
 end
 
