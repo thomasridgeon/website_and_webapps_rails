@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   # portcharges calculator
   resource :portcharges, only: [ :new, :create ] # resource singular, because it's only the one calculator, and only new and create RESTful routes are needed
+  get "portcharges", to: "portcharges#new"
+
 
   # solardcalculator
   resource :solardcalculator, only: [ :new, :create ]
+  get "solardcalculator", to: "solardcalculator#new"
 
   # journal app
   namespace :journal do

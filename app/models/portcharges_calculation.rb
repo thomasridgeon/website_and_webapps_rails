@@ -1,4 +1,4 @@
-class PortchargesCalculation < ApplicationRecord
+class PortchargesCalculation
   RATES = {
     "fas" => {
       "20ST" => 1221.98,

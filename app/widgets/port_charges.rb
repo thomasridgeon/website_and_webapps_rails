@@ -1,5 +1,15 @@
 #---Port Charges Calculator Widget-----
 class PortCharges < Erector::Widget
+  def initialize(result: nil, controller: nil)
+    # Initializes the widget.
+    # result: A hash containing the calculation results (optional).
+    # controller: The Rails controller instance, needed to access helper methods.
+    super({}) # Calls the parent class's initialize method to ensure proper setup.
+    @result = result # Assigns the result to an instance variable for use in other methods.
+    @controller = controller # Assigns the controller instance for accessing helper methods.
+  end
+
+
   def content
     html do
       head do
@@ -32,9 +42,10 @@ class PortCharges < Erector::Widget
           end
 
           form(action: "/portcharges", method: "post") do
-            # form(action: '/calculate', method: 'post') do: This line uses the Erector form method to create an HTML <form> tag
-            # action: '/calculate': This attribute specifies the URL (/calculate) to which the form data will be sent when the user clicks the "Calculate Charges" button. This corresponds to the post '/calculate' route in the Sinatra app.
-            # method: 'post': This specifies that the form data will be sent using the HTTP POST method, which is the standard way to submit data that creates or updates something on the server.
+            input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+            # generates a hidden input field that contains a CSRF (Cross-Site Request Forgery) token. This is a security measure that ensures the form submission is valid and not from a malicious source.
+            # The widget accesses the token by calling the `form_authenticity_token` method on the `@controller` instance, which was passed in from the controller.
+            # This is required because the widget, a standalone Ruby class, does not have direct access to the controller's helper methods.
 
             div(class: "mb-6") do
               label("Number of Containers:", for: "num_containers",
@@ -86,7 +97,7 @@ class PortCharges < Erector::Widget
             end
 
             if @result
-              # This is a conditional statement. It checks if the @result instance variable has a value. In Sinatra, the @result variable is only assigned a value when the post '/calculate' route is called after the form is submitted. This if block ensures that the total charge is only displayed after the calculation has been performed and a result is available, and not when the page is first loaded.
+              # This is a conditional statement. It checks if the @result instance variable has a value. The @result variable is only assigned a value when the post '/calculate' route is called after the form is submitted. This if block ensures that the total charge is only displayed after the calculation has been performed and a result is available, and not when the page is first loaded.
               div(class: "mt-8 p-6 bg-blue-50 rounded-lg") do
                 h2(class: "text-2xl font-bold text-center text-blue-800 mb-4") do
                   text "Breakdown of Charges"
@@ -140,18 +151,5 @@ class PortCharges < Erector::Widget
         end
       end
     end
-  end
-
-  def initialize(result = nil)
-    # def initialize(result = nil): This line defines the initialize method, which is the class constructor in Ruby. It accepts one parameter, result, and the = nil part makes this parameter optional. When a page object is created without a result (e.g., on the initial /portcharges page load), result is set to nil. When a new page object is created after a calculation, the total charge is passed as the result.
-    super ({})
-    # super: The super keyword calls the initialize method of the parent class, which is Erector::Widget. This is a crucial step that ensures the parent class is properly set up before the subclass code runs.
-    # super({}). This passes an empty hash to the parent class
-    @result = result
-    # @result = result: This line assigns the value of the result parameter to an instance variable named @result. An instance variable is a variable that belongs to a specific instance of the class, making its value available to all other methods within that instance, such as the content method that renders the HTML.
-    # The @ symbol in front of a variable name in Ruby signifies that it's an instance variable. Think of a class as a blueprint for a house and an instance of that class as a specific house built from that blueprint.
-    # result (without the @): This is a local variable. It only exists inside the initialize method. Once the initialize method finishes its job, this variable disappears.
-    # @result (with the @): This is an instance variable. It becomes a part of the specific PortChargesCalculatorPage object you've created. This variable will persist for the entire life of that object and can be accessed by any other method within that same object.
-    # The initialize method is where the result from the calculation is first received. By assigning it to the instance variable @result, you are effectively saving that value to the "house" so that other "rooms" (methods) in the "house" can use it.
   end
 end
