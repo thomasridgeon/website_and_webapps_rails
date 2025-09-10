@@ -40,8 +40,11 @@ class SolardCalculator < Erector::Widget
               p(class: "text-5xl font-extrabold text-blue-800 mb-6") { @uv_index }
 
               form(action: "/solardcalculator", method: "post") do
-                input(type: "hidden", name: "uv_index", value: @uv_index)
+                input(type: "hidden", name: "uv_index", value: @uv_index, name: "authenticity_token", value: @controller.send(:form_authenticity_token))
                 # here we add a hiden input to pass on the UV index to the POST request
+                # generates a hidden input field that contains a CSRF (Cross-Site Request Forgery) token. This is a security measure that ensures the form submission is valid and not from a malicious source.
+                # The widget accesses the token by calling the `form_authenticity_token` method on the `@controller` instance, which was passed in from the controller.
+                # This is required because the widget, a standalone Ruby class, does not have direct access to the controller's helper methods.
 
                 div(class: "mb-6") do
                   label("Age", for: "age", class: "block text-sm font-medium text-gray-700 mb-2")
