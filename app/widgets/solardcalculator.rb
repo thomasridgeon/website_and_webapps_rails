@@ -1,6 +1,6 @@
 #---Solar D Calculator Widget------------------
-class SolardCalculator < Erector::Widget
-  needs :uv_index, :result_time
+class Solardcalculator < Erector::Widget
+  needs :uv_index, :result_time, :controller
   # added variables that will hold the numerical values for the UV index from openuv, the current time, and the time calculated for optimal vitamin D
 
   def content
@@ -111,7 +111,7 @@ class SolardCalculator < Erector::Widget
           end
 
           div(class: "my-4 text-center") do
-            a(href: "/sunbenefits", class: "bg-white text-gray-700 text-base underline") do
+            a(href: "/solarbenefits", class: "bg-white text-gray-700 text-base underline") do
               text "Click here to learn more about the benefits of sun exposure"
             end
           end

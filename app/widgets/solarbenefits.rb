@@ -1,5 +1,5 @@
 # Solar Benefits erector Widget
-class SolarBenefits < Erector::Widget
+class Solarbenefits < Erector::Widget
   def content
     rawtext "<!DOCTYPE html>"
 

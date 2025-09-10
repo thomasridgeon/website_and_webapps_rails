@@ -1,14 +1,6 @@
 #---Port Charges Calculator Widget-----
 class PortCharges < Erector::Widget
-  def initialize(result: nil, controller: nil)
-    # Initializes the widget.
-    # result: A hash containing the calculation results (optional).
-    # controller: The Rails controller instance, needed to access helper methods.
-    super({}) # Calls the parent class's initialize method to ensure proper setup.
-    @result = result # Assigns the result to an instance variable for use in other methods.
-    @controller = controller # Assigns the controller instance for accessing helper methods.
-  end
-
+  needs :result, :controller
 
   def content
     html do
@@ -99,7 +91,7 @@ class PortCharges < Erector::Widget
             if @result
               # This is a conditional statement. It checks if the @result instance variable has a value. The @result variable is only assigned a value when the post '/calculate' route is called after the form is submitted. This if block ensures that the total charge is only displayed after the calculation has been performed and a result is available, and not when the page is first loaded.
               div(class: "mt-8 p-6 bg-blue-50 rounded-lg") do
-                h2(class: "text-2xl font-bold text-center text-blue-800 mb-4") do
+                h2(class: "text-2xl font-bold text-center text-gray-600 mb-4") do
                   text "Breakdown of Charges"
                 end
                 ul(class: "mb-4") do
@@ -108,12 +100,12 @@ class PortCharges < Erector::Widget
                     # @result[:breakdown].each do |charge_name, amount|: This is a key line that iterates through the breakdown hash
                     # charge_name, amount|: in each loop, the key (e.g., 'FAS') is assigned to the variable charge_name and the value (the calculated amount, e.g., 1221.98) is assigned to the variable amount.
                     li(class: "flex justify-between items-center py-2 border-b border-blue-200 last:border-b-0") do
-                      # This creates a list item (<li>) for each charge. The Tailwind classes are used to format it
-                      span(class: "text-sm font-medium text-blue-700") do
-                        # This creates a <span> to hold the charge name. The Tailwind classes style the text.
+                      # This creates a list item (<li>) for each charge.
+                      span(class: "text-sm font-medium text-gray-600") do
+                        # This creates a <span> to hold the charge name.
                         text charge_name
                       end
-                      span(class: "text-sm font-semibold text-blue-700") do
+                      span(class: "text-sm font-semibold text-gray-600") do
                         # This creates another <span> to hold the amount. The classes style it with a slightly heavier font weight
                         text "BBD $%.2f" % amount
                         # "BBD $%.2f": is a Ruby format string. %.2f is the placeholder for a floating-point number, and the .2 specifies that it should be rounded to exactly two decimal places.
@@ -123,7 +115,7 @@ class PortCharges < Erector::Widget
                   end
                 end
 
-                div(class: "text-lg font-semibold text-center text-blue-700 mt-4") do
+                div(class: "text-lg font-semibold text-center text-gray-600 mt-4") do
                   text "Total Port Charges"
                   span(class: "text-2xl font-extrabold") do
                     # This line creates an inline <span> element. Since it's an inline element, it appears on the same line as the text that precedes it ("Total Port Charges"). This <span> is used to apply a different style specifically to the number, making it stand out from the rest of the line. The Tailwind classes are applied
