@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   # solardcalculator
-  resource :solardcalculator, only: [ :new, :create ]
+  resource :solardcalculator, only: [ :new, :create ], controller: "solardcalculator"
   get "solardcalculator", to: "solardcalculator#new"
 
   # journal app

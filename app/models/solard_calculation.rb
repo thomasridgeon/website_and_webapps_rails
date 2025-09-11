@@ -1,4 +1,4 @@
-class SolardCalculation < ApplicationRecord
+class SolardCalculation
   SKIN_MULTIPLIERS = {
     1 => 0.8,
     2 => 1.0,
