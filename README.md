@@ -30,7 +30,7 @@ A web app that calculates required sun exposure to synthesize an optimum daily d
 > **Note:** On localhost, the IP-based geolocation fallback defaults to Barbados if the API cannot determine a location from your local machine’s IP.
 
 ### Encrypted Journal (in progress)
-A secure CRUD application for creating and managing notes with AES encryption. 
+A CRUD application for creating and managing notes with AES encryption. 
 - Session data is stored securely in the database (nothing in cookies or on the server). 
 - Currently under development in Rails.
 
