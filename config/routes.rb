@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resource :solardcalculator, only: [ :new, :create ], controller: "solardcalculator"
   get "solardcalculator", to: "solardcalculator#new"
 
+  # broker toolkit
+  resource :brokertoolkit, only: [ :index, :create ], controller: "brokertoolkit"
+  get "brokertoolkit", to: "brokertoolkit#index"
+
   # journal app
   namespace :journal do
     # landing page
