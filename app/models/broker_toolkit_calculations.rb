@@ -30,6 +30,6 @@ class BrokerToolkitCalculations
 
     amount = amount.to_f
     conversion = rate * amount
-    "#{currency} #{amount} in BBD is #{conversion.round(2)}"
+    "BBD $#{conversion.round(2)}"
   end
 end

@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   get "solardcalculator", to: "solardcalculator#new"
 
   # broker toolkit
-  resource :brokertoolkit, only: [ :index, :create ], controller: "brokertoolkit"
-  get "brokertoolkit", to: "brokertoolkit#index"
+  resource :brokertoolkit, only: [ :new, :create ], controller: "brokertoolkit"
+  get "brokertoolkit", to: "brokertoolkit#new"
 
   # journal app
   namespace :journal do

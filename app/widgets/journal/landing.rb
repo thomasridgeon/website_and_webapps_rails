@@ -32,15 +32,21 @@ class Journal::Landing < Erector::Widget
           p(class: "text-base sm:text-lg font-normal mb-10 text-center text-gray-600") do
             text "This is a secure journal for creating and managing your notes. It uses AES encryption to keep your data private and protected. Your notes are stored securely in the database, ensuring no session data is saved on your device or in cookies. With this app, you can create, read, update, and delete your entries with peace of mind."
           end
-          a(href: "/journal/login",
-            class: "block text-lg sm:text-xl font-bold mb-6 text-center text-black") do
-              text "Log in"
+          div(class: "flex flex-col items-center") do
+            div(class: "mb-4") do
+              a(href: "/journal/login",
+                class: "inline-block py-2 px-4 bg-black hover:bg-gray-700 text-white text-base font-bold rounded-lg shadow-md transition-colors duration-300") do
+                  text "Log in"
+              end
             end
-          a(href: "/journal/signup",
-            class: "block text-lg sm:text-xl font-bold mb-6 text-center text-black") do
-              text "Don't have an account? Sign up"
+            div(class: "mt-4") do
+              a(href: "/journal/signup",
+                class: "inline-block py-2 px-4 bg-black hover:bg-gray-700 text-white text-base font-bold rounded-lg shadow-md transition-colors duration-300") do
+                  text "Don't have an account? Sign up"
+              end
             end
           end
+         end
         end
       end
   end
