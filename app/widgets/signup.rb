@@ -30,6 +30,8 @@ class Signup < Erector::Widget
           h2(class: "text-2xl sm:text-3xl font-bold mb-6 text-center text-black") { text "Sign Up" }
 
           form(action: "/journal/signup", method: "post", class: "space-y-4") do
+            form(action: "/brokertoolkit", method: "post") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
             # Username
             div do
               label(for: "username", class: "block mb-1 font-medium") { text "Username" }

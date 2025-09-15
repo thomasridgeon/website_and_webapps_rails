@@ -12,7 +12,7 @@ class Journal::RegistrationsController < ApplicationController
       # store user in session
       session[:user_id] = user.id
       session[:derived_key] = Base64.encode64(derive_key(params[:password], user.salt))
-      redirect journal_notes_path
+      redirect "/journal/notes"
     else
       render plain: "Signup failed"
     end

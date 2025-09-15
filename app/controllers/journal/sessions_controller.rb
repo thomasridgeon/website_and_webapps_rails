@@ -10,7 +10,7 @@ class Journal::SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       session[:derived_key] = Base64.encode64(derive_key(params[:password]))
-      redirect journal_notes_path
+      redirect "/journal/notes"
     else
       render plain: "Login failed"
     end
@@ -20,6 +20,6 @@ class Journal::SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:derived_key] = nil
-    redirect journal_login_path
+    redirect "/journal/login"
   end
 end

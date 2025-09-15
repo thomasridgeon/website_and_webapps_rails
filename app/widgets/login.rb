@@ -26,6 +26,7 @@ class Login < Erector::Widget
           h2(class: "text-2xl sm:text-3xl font-bold mb-6 text-center text-black") { text "Login" }
 
           form(action: "/journal/login", method: "post", class: "space-y-4") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
             # Username
             div do
               label(for: "username", class: "block mb-1 font-medium") { text "Username" }
