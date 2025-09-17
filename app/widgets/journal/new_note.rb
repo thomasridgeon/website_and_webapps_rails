@@ -1,4 +1,5 @@
 class Journal::NewNote < Journal::BaseWidget
+  needs :controller
   def content
     page("New Note") do
       h2(class: "text-2xl font-bold mb-4 text-black text-center") { text "New Note" }

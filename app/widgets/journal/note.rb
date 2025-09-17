@@ -7,12 +7,12 @@ class Journal::Note < Journal::BaseWidget
 
       # preserve new lines and spacing
       div(class: "prose prose-lg text-black whitespace-pre-wrap") do
-        text plaintext
+        text @plaintext
       end
 
       div(class: "mt-6 flex justify-between") do
         a(href: "/journal/notes", class: "text-gray-500 hover:underline") { text "Back" }
-        a(href: "/journal/notes/#{note_id}/edit", class: "text-blue-500 hover:underline") { text "Edit" }
+        a(href: "/journal/notes/#{@note_id}/edit", class: "text-blue-500 hover:underline") { text "Edit" }
       end
     end
   end

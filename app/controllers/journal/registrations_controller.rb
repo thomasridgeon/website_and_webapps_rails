@@ -1,7 +1,7 @@
 class Journal::RegistrationsController < ApplicationController
   # GET /journal/signup
   def new
-    render html: Signup.new.to_html.html_safe
+    render html: Signup.new(controller: self).to_html.html_safe
   end
 
   # POST /journal/signup
@@ -11,8 +11,8 @@ class Journal::RegistrationsController < ApplicationController
     if user.save
       # store user in session
       session[:user_id] = user.id
-      session[:derived_key] = Base64.encode64(derive_key(params[:password], user.salt))
-      redirect "/journal/notes"
+      session[:derived_key] = Base64.encode64(user.derive_key(params[:password], user.salt))
+      redirect_to "/journal/notes"
     else
       render plain: "Signup failed"
     end

@@ -31,8 +31,6 @@ A web app that calculates required sun exposure to synthesize an optimum daily d
 
 ### Encrypted Journal (in progress)
 A CRUD application for creating and managing notes with AES encryption. 
-- Session data is stored securely in the database (nothing in cookies or on the server). 
-- Currently under development in Rails.
 
 ---
 
