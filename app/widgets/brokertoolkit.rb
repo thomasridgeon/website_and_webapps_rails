@@ -74,6 +74,35 @@ class Brokertoolkit < Erector::Widget
                 p(class: "text-xl font-semibold text-center") { text @result }
               end # closes if statement
           end # closes div for card 1
+
+          # =============================================
+          # --- Card 2: collect freight calculator-------
+          # =============================================
+          div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
+            h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
+              text "Collect Freight Calculator"
+            end
+
+            form(action: "/brokertoolkit", method: "post") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+              input type: "hidden", name: "calculator_type", value: "collectfreight"
+
+              div(class: "mb-6") do
+                label("USD Collect Freight:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
+                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+              end
+
+              div(class: "mb-6") do
+                input(type: "submit", value: "Calculate", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
+              end
+
+              # Show results if it's for this calculator
+              if defined?(@result) && @result.present?
+                p(class: "text-xl font-semibold text-center") { text @result }
+              end # closes if statement
+            end
+          end # closes div for card 2
       end # closes body
     end # closes html
   end # closes content method
