@@ -20,7 +20,9 @@ class Journal::Notes < Journal::BaseWidget
           @notes.each do |note|
             li(class: "p-4 border rounded") do
               a(href: "/journal/notes/#{note.id}", class: "text-lg font-semibold text-black hover:underline") do
-                text "Note##{note.id}"
+                text(note.title.present? ? note.title : "Note##{note.id}")
+                # ? : (ternary operator)- shorthand for an if/else statement. It works like: condition ? value_if_true : value_if_false.
+                # So here - If note.title.present? is true → use note.title. If note.title.present? is false → use "Note##{note.id}"
               end
 
               div(class: "mt-2 space-x-4") do

@@ -24,8 +24,13 @@ class Journal::NotesController < ApplicationController
   def create
     key = Base64.decode64(session[:derived_key])
     # .decode64 because when I need to use the key for encrypting the note, I have to convert the key from the base64 encoded string it is stored as in the session, back into the raw binary so OpenSSL can use it.
-    note = Note.encrypt(params[:body], key) # params of what to encrypt is the plaintext body of the note, using the AES key decoded from the session
-    note.user = current_user
+    encrypted_note = Note.encrypt(params[:body], key) # params of what to encrypt is the plaintext body of the note, using the AES key decoded from the session
+    note = current_user.notes.new(
+      title: params[:title],
+      ciphertext: encrypted_note.ciphertext,
+      iv: encrypted_note.iv,
+      tag: encrypted_note.tag
+    )
     note.save
     redirect_to "/journal/notes/#{note.id}"
   end
@@ -42,6 +47,7 @@ class Journal::NotesController < ApplicationController
     key = Base64.decode64(session[:derived_key])
     encrypted_note = Note.encrypt(params[:body], key)
     @note.update(
+      title: params[:title],
       ciphertext: encrypted_note.ciphertext, # takes the existing note which Rails loads in the before_action set_note
       iv: encrypted_note.iv, # updates the database record by replacing the old ciphertext, IV and tag with newly encrypted values
       tag: encrypted_note.tag
@@ -62,5 +68,9 @@ class Journal::NotesController < ApplicationController
 
   def set_note
     @note = current_user.notes.find(params[:id])
+  end
+
+  def note_params
+    params.permit(:title)
   end
 end

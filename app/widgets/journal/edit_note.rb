@@ -7,6 +7,11 @@ class Journal::EditNote < Journal::BaseWidget
 
       form(action: "/journal/notes/#{@note.id}", method: "post", class: "space-y-4") do
         input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+
+        input(type: "text", name: "title", id: "title",
+              value: @note.title,
+              class: "mt-1 block w-full border rounded p-2")
+
         # Rails style PATCH via hidden _method
         # HTML forms only support GET and POST methods natively.
         # Rails uses the _method hidden input to simulate other HTTP verbs like PATCH, PUT, or DELETE.
