@@ -28,19 +28,17 @@ class Journal::BaseWidget < Erector::Widget
 
       body(class: "min-h-screen p-4 flex flex-col items-center") do
         # Nav row
-        div(class: "w-full max-w-3xl flex items-center justify-between mb-6") do
-          a(href: "/journal", class: "text-lg font-semibold text-black") { text "Encrypted Journal" }
-          div(class: "flex items-center") do
-            a(href: "/journal/notes", class: "mr-4 text-sm text-gray-700 hover:underline") { text "Notes" }
+        div(class: "w-full max-w-3xl flex items-center justify-end mb-6") do
+          div(class: "flex items-center space-x-4") do
+            a(href: "/journal/notes", class: "text-sm text-gray-700 hover:underline") { text "Notes" }
             if @controller && @controller.respond_to?(:current_user) && @controller.current_user
               # if controller - checks if the controller object exists
               # && controller.respond_to?(:current_user) - checks the controller object has a method named current_user
               # controller.current_user - finally, it calls current_user and checks if it returns something truthy (a user object if logged in, or nil if not)
-              span(class: "mr-4 text-sm text-gray-500") { text @controller.current_user.username }
-              form(action: "/journal/logout", method: "post", class: "inline") do
+              form(action: "/journal/logout", method: "post", class: "flex items-center m-0 p-0") do
                 input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
                 input(type: "hidden", name: "_method", value: "delete")
-                input(type: "submit", value: "Logout", class: "text-sm text-red-600 hover:underline bg-transparent border-0 cursor-pointer")
+                input(type: "submit", value: "Logout", class: "text-sm text-gray-700 hover:underline bg-transparent border-0 cursor-pointer")
               end
             else
               a(href: "/journal/login", class: "text-sm text-gray-700 hover:underline") { text "Login" }

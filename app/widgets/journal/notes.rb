@@ -9,10 +9,10 @@ class Journal::Notes < Journal::BaseWidget
 
   def content
     page("Your Journal") do
-      h2(class: "text-2xl font-bold mb-4 text-black text-center") { text "Your Journal" }
+      h2(class: "text-xl sm:text-xl-2 font-semibold mb-10 text-black text-center") { text "#{@controller.current_user.username}'s Journal" }
 
-      div(class: "mb-4 text-right") do
-        a(href: "/journal/notes/new", class: "bg-black text-white px-4 py-2 rounded hover:bg-gray-800") { text "New Note" }
+      div(class: "mb-10 text-center") do
+        a(href: "/journal/notes/new", class: "bg-black text-white px-2 py-2 rounded hover:bg-gray-800") { text "New Note" }
       end
 
       if @notes.any?
