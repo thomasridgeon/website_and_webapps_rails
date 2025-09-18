@@ -1,9 +1,9 @@
 class Journal::Note < Journal::BaseWidget
-  needs :plaintext, :note_id
+  needs :plaintext, :note_id, :title
 
   def content
     page("Note") do
-      h2(class: "text-2xl font-bold mb-4 text-black text-center") { text "Note" }
+      h2(class: "text-2xl font-bold mb-4 text-black text-center") { text @title }
 
       # preserve new lines and spacing
       div(class: "prose prose-lg text-black whitespace-pre-wrap") do

@@ -12,7 +12,12 @@ class Journal::NotesController < ApplicationController
   def show
     key = Base64.decode64(session[:derived_key])
     @plaintext = @note.decrypt(key)
-    render html: Journal::Note.new(plaintext: @plaintext, note_id: @note.id, controller: self).to_html.html_safe
+    render html: Journal::Note.new(
+      plaintext: @plaintext,
+      note_id: @note.id,
+      title: @note.title.present? ? @note.title : "Note##{@note.id}",
+      controller: self
+    ).to_html.html_safe
   end
 
   # GET /journal/notes/new
