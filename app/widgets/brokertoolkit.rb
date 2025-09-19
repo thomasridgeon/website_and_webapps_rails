@@ -68,12 +68,7 @@ class Brokertoolkit < Erector::Widget
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-
-              # Show results if it's for this calculator
-              if defined?(@result) && @result.present?
-                p(class: "text-xl font-semibold text-center") { text @result }
-              end # closes if statement
-          end # closes div for card 1
+          end
 
           # =============================================
           # --- Card 2: collect freight calculator-------
@@ -96,13 +91,26 @@ class Brokertoolkit < Erector::Widget
               div(class: "mb-6") do
                 input(type: "submit", value: "Calculate", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-
-              # Show results if it's for this calculator
-              if defined?(@result) && @result.present?
-                p(class: "text-xl font-semibold text-center") { text @result }
-              end # closes if statement
             end
-          end # closes div for card 2
+          end
+
+          # =================================
+          # ---Results Section---------------
+          # =================================
+          if defined?(@result) && @result.present?
+            div(class: "mt-6") do
+              h3(class: "text-lg font-bold mb-2 text-center") { text "Result" }
+
+              if @result.is_a?(Hash)
+                div(class: "text-center space-y-2") do
+                  p(class: "text-lg font-semibold") { text "Collect Freight BBD: $#{@result[:bbd_collect]}" }
+                  p(class: "text-lg font-semibold") { text "FX Charge: $#{@result[:fx_charge]}" }
+                end
+              else
+                p(class: "text-xl font-semibold text-center") { text @result }
+              end # closes if/else for result type
+            end # closes div for results
+          end # closes if
       end # closes body
     end # closes html
   end # closes content method
