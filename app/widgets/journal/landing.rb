@@ -32,7 +32,8 @@ class Journal::Landing < Erector::Widget
           img(src: "/images/journal.png", alt: "journal logo",
               class: "w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-2 md:mb-0")
           p(class: "text-base sm:text-lg font-normal mb-10 text-center text-gray-600") do
-            text "This is a secure journal for creating and managing your notes. It uses AES encryption to keep your data private and protected. With this app, you can create, read, update, and delete your notes with peace of mind."
+            text "A secure note-taking app that uses AES-256 encryption to keep your data private. " \
+                 "Create, edit, and delete notes with titles and bodies, knowing your personal journal stays protected—even if the database is compromised."
           end
           div(class: "flex flex-col items-center") do
             div(class: "mb-4") do

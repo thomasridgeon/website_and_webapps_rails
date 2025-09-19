@@ -29,8 +29,8 @@ A simple web app designed for customs brokers in Barbados to calculate Barbados 
 A web app that calculates required sun exposure to synthesize an optimum daily dose of vitamin D (1,000 IU), based on age and skin type. 
 > **Note:** On localhost, the IP-based geolocation fallback defaults to Barbados if the API cannot determine a location from your local machine’s IP.
 
-### Encrypted Journal (in progress)
-A CRUD application for creating and managing notes with AES encryption. 
+### Encrypted Journal
+A secure note-taking app that uses AES-256 encryption to keep your data private. Create, edit, and delete notes with titles and bodies, knowing your personal journal stays protected—even if the database is compromised. Sign up with just a username and password. The app generates a unique randomly generated salt for each user. An AES encryption key is derived from the user's password + salt via PBKDF2. The AES key is re-derived on login using the stored salt and entered password, which are hashed via bcrypt and stored in the database as a password_hash and never plaintext. The AES key itself is never stored in the database, but only temporarily stored in the session as an encrypted cookie. 
 
 ---
 

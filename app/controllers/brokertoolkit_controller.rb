@@ -1,6 +1,6 @@
 class BrokertoolkitController < ApplicationController
   def new
-    render html: Brokertoolkit.new(controller: self, result: nil).to_html.html_safe
+    render html: Brokertoolkit.new(controller: self, result: nil, calculator_type: nil).to_html.html_safe
   end
 
   def create

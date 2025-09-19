@@ -84,6 +84,23 @@ class Projects < Erector::Widget
           p(class: "text-sm sm:text-base mb-4") do
             text "This is a web app which tells you the current UV index of the sun in your region and calculates, based on your age and skin type, the amount of time you would have to be outside with at least 25% of your body exposed to synthesize an optimum daily amount of vitamin D (1,000 IU)."
           end
+          a(href: "/journal", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
+            text "Encrypted Journal"
+          end
+          p(class: "text-sm sm:text-base mb-4") do
+            text "A secure note-taking app that uses AES-256 encryption to keep your data private. " \
+                 "Create, edit, and delete notes with titles and bodies, knowing your personal journal stays protected—even if the database is compromised. Sign up with just a username and password. " \
+                 "The app generates a unique randomly generated salt for each user. " \
+                 "An AES encryption key is derived from the user's password + salt via PBKDF2. " \
+                 "The AES key is re-derived on login using the stored salt and entered password, which are hashed via bcrypt and stored in the database as a password_hash and never plaintext. " \
+                 "The AES key itself is never stored in the database, but only temporarily stored in the session as an encrypted cookie. " \
+          end
+          a(href: "/brokertoolkit", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
+            text "Customs Broker Toolkit"
+          end
+          p(class: "text-sm sm:text-base mb-4") do
+            text "A collection of tools which I use on a day-to-day basis as a customs broker in Barbados. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
+          end
         end
       end
     end
