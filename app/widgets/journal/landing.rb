@@ -25,15 +25,18 @@ class Journal::Landing < Erector::Widget
         end
       end
 
-      body(class: "flex items-center justify-center min-h-screen p-4") do
+      body(class: "flex items-center justify-center min-h-screen p-4 relative") do
+        # top-left link back to projects
+        div(class: "absolute top-4 left-4") do
+          a(href: "/projects", class: "text-sm text-gray-800 hover:underline bg-transparent border-0 cursor-pointer") { text "Return to Projects" }
+        end
         # parent container
-        div(class: "w-full max-w-md bg-white p-6 rounded-lg shadow-md") do
+        div(class: "w-full max-w-md bg-white p-6 rounded-lg shadow-md mt-10") do
           h2(class: "text-3xl sm:text-4xl font-bold mb-10 text-center text-black") { text "Encrypted Journal" }
           img(src: "/images/journal.png", alt: "journal logo",
               class: "w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-2 md:mb-0")
           p(class: "text-base sm:text-lg font-normal mb-10 text-center text-gray-600") do
-            text "A secure note-taking app that uses AES-256 encryption to keep your data private. " \
-                 "Create, edit, and delete notes with titles and bodies, knowing your personal journal stays protected—even if the database is compromised."
+            text "A private, encrypted journal that keeps your entries safe with AES-256 encryption- accessible only to you, never exposed to the server."
           end
           div(class: "flex flex-col items-center") do
             div(class: "mb-4") do

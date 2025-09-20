@@ -99,8 +99,8 @@ class Brokertoolkit < Erector::Widget
             end
             if @result.is_a?(Hash) && @calculator_type == "collectfreight"
                 div(class: "text-center space-y-2") do
-                  p(class: "text-lg font-semibold") { text "Collect Freight BBD: $#{@result[:bbd_collect]}" }
-                  p(class: "text-lg font-semibold") { text "FX Charge: $#{@result[:fx_charge]}" }
+                  p(class: "text-lg font-semibold") { text "Collect Freight: #{@result[:bbd_collect]}" }
+                  p(class: "text-lg font-semibold") { text "FX Charge: #{@result[:fx_charge]}" }
                 end
             elsif @calculator_type == "collectfreight"
                 p(class: "text-xl font-semibold text-center") { text @result }

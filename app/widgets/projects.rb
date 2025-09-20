@@ -76,13 +76,13 @@ class Projects < Erector::Widget
             text "Port Charges Calculator"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "This is the first web app I coded. It's one of the customs broker tools I had originally \"vibe coded\" with Replit. I then re-wrote it in Ruby. It's a simple web app for customs brokers in Barbados to calculate Barbados Port Charges."
+            text "This is the first web app I coded. It's one of the customs broker tools I had originally created with Replit. I then re-wrote it in Ruby. It's an app which I use daily as a customs broker in Barbados to calculate Barbados Port Charges."
           end
           a(href: "/solardcalculator", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
             text "Solar D Calculator"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "This is a web app which tells you the current UV index of the sun in your region and calculates, based on your age and skin type, the amount of time you would have to be outside with at least 25% of your body exposed to synthesize an optimum daily amount of vitamin D (1,000 IU)."
+            text "A web app to tell you the current UV index of the sun in your region as well as calculate, based on your age and skin type, the amount of time you would have to be outside with at least 25% of your body exposed to synthesize an optimum daily amount of vitamin D (1,000 IU)."
           end
           a(href: "/journal", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
             text "Encrypted Journal"
@@ -99,7 +99,7 @@ class Projects < Erector::Widget
             text "Customs Broker Toolkit"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "A collection of tools which I use on a day-to-day basis as a customs broker in Barbados. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
+            text "A collection of tools which I use daily as a customs broker in Barbados. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
           end
         end
       end
