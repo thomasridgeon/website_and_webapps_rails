@@ -23,14 +23,17 @@ Starting with Sinatra gave valuable hands-on experience configuring web apps fro
 ## Apps
 
 ### Port Charges Calculator
-A simple web app designed for customs brokers in Barbados to calculate Barbados Port Charges.
+A web app for customs brokers in Barbados to calculate Barbados Port Charges.
 
 ### Solar D Calculator
-A web app that calculates required sun exposure to synthesize an optimum daily dose of vitamin D (1,000 IU), based on age and skin type. 
+A web app that calculates, based on age and skin type, the required time in the sun with at least 25% of the body exposed to synthesize an optimal daily dose of vitamin D (1,000 IU). 
 > **Note:** On localhost, the IP-based geolocation fallback defaults to Barbados if the API cannot determine a location from your local machine’s IP.
 
 ### Encrypted Journal
 A secure note-taking app that uses AES-256 encryption to keep your data private. Create, edit, and delete notes with titles and bodies, knowing your personal journal stays protected—even if the database is compromised. Sign up with just a username and password. The app generates a unique randomly generated salt for each user. An AES encryption key is derived from the user's password + salt via PBKDF2. The AES key is re-derived on login using the stored salt and entered password, which are hashed via bcrypt and stored in the database as a password_hash and never plaintext. The AES key itself is never stored in the database, but only temporarily stored in the session as an encrypted cookie. 
+
+### Customs Broker Toolkit
+A collection of tools for customs brokers in Barabdos. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars.
 
 ---
 
