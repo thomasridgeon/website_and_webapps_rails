@@ -80,8 +80,4 @@ rails server
 ```
 
 ## Notes
-- This project evolved from Sinatra to Rails, illustrating the differences between minimal and full-featured frameworks.
-
-- Configuring routes, controllers, and database connections manually in Sinatra provided insight into how Rails simplifies and accelerates development.
-
 - Inline comments in the codebase contain study notes from my learning process.
