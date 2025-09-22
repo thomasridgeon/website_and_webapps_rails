@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "erector"
 gem "httparty"
 gem "tailwindcss-rails"
+gem "phlex-rails"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2", ">= 8.0.2.1"

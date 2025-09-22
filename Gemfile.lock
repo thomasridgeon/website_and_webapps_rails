@@ -208,6 +208,12 @@ GEM
     pg (1.6.2-aarch64-linux-musl)
     pg (1.6.2-x86_64-linux)
     pg (1.6.2-x86_64-linux-musl)
+    phlex (2.3.1)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.3.1)
+      phlex (~> 2.3.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     polyglot (0.3.5)
     pp (0.6.2)
       prettyprint
@@ -402,6 +408,7 @@ DEPENDENCIES
   jbuilder
   kamal
   pg (~> 1.1)
+  phlex-rails
   propshaft
   pry-byebug
   puma (>= 5.0)
