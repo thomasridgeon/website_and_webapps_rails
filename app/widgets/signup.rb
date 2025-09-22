@@ -1,4 +1,6 @@
 class Signup < Erector::Widget
+  needs :controller
+  needs :error_message
   def content
     html do
       head do
@@ -32,6 +34,13 @@ class Signup < Erector::Widget
         # parent container
         div(class: "w-full max-w-md bg-white p-6 rounded-lg shadow-md") do
           h2(class: "text-2xl sm:text-3xl font-bold mb-6 text-center text-black") { text "Sign Up" }
+
+          # error message (if present)
+          if @error_message
+            div(class: "mb-4 p-2 bg-red-100 border border-red-400 text-red-700 rounded") do
+              text @error_message
+            end
+          end
 
           form(action: "/journal/signup", method: "post", class: "space-y-4") do
             input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
