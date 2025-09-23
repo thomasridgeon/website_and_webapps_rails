@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_18_134201) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_23_132947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "blog_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_user_id"], name: "index_blog_posts_on_blog_user_id"
+  end
+
+  create_table "blog_users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.boolean "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "notes", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -33,5 +50,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_18_134201) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "blog_posts", "blog_users"
   add_foreign_key "notes", "users"
 end

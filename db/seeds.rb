@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+admin_username = ENV.fetch("BLOG_ADMIN_USERNAME")
+admin_password = ENV.fetch("BLOG_ADMIN_PASSWORD")
+
+admin = BlogUser.find_or_initialize_by(username: admin_username)
+admin.password = admin_password
+admin.password_confirmation = admin_password
+admin.admin = true
+admin.save!
+
+puts "Seeded admin user: #{admin.username}"

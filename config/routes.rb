@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  # blog
+  namespace :blog do
+    get "/login", to: "sessions#new", as: :login
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy", as: :logout
+
+    namespace :admin do
+      resources :posts
+    end
+  end
+
+
   # static pages
   root "home#index"
   get "/about", to: "aboutme#index"
