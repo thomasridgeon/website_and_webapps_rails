@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy", as: :logout
 
+    # public-facing posts
+    resources :posts, only: [ :index, :show ]
+
+    # admin only posts
     namespace :admin do
       resources :posts
     end
