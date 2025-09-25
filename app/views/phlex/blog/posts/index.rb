@@ -6,7 +6,7 @@ class Blog::Posts::Index < Phlex::HTML
   def template
     html do
       head do
-        title "Home Page"
+        title "Blog Posts Index"
         meta(charset: "UTF-8")
         meta(name: "viewport", content: "width=device-width, initial-scale=1.0")
 
