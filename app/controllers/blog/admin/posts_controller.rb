@@ -10,25 +10,27 @@ class Blog::Admin::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render Blog::Admin::Posts::New.new(post: @post)
+    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_posts_path, method: "post")
   end
 
   def create
     @post = Post.new(post_params)
     if @post.save
       redirect_to blog_admin_posts_path, notice: "Post created!"
+    else
+      render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_posts_path, method: "post")
     end
   end
 
   def edit
-    render Blog::Admin::Posts::Edit.new(post: @post)
+    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_path(@post), method: "patch")
   end
 
   def update
     if @post.update(post_params)
       redirect_to blog_admin_posts_path, notice: "Post updated!"
     else
-      render Blog::Admin::Posts::Edit.new(post: @post)
+      render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post), method: "patch")
     end
   end
 
