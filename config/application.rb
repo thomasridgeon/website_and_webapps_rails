@@ -19,6 +19,10 @@ module WebsiteAndWebappsRails
     # Add autoload path for custom Erector widgets
     config.autoload_paths << Rails.root.join("app/widgets")
 
+    # Add autoload path for Phlex componenets
+    config.autoload_paths << Rails.root.join("app/components")
+
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

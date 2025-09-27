@@ -1,6 +1,6 @@
 class Blog::SessionsController < ApplicationController
   def new
-    render Blog::Sessions::New.new
+    render Blog::Sessions::New
   end
 
   def create
@@ -10,7 +10,7 @@ class Blog::SessionsController < ApplicationController
       redirect_to blog_admin_posts_path, notice: "Logged in"
     else
       flash.now[:alert] = "Invalid credentials"
-      render Blog::Sessions::New.new
+      render Blog::Sessions::New, status: :unprocessable_entity
     end
   end
 
