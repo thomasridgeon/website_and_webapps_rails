@@ -8,10 +8,10 @@ module Blog
           @url = url
           @method = method
         end
-        def template
+        def view_template
           html do
             head do
-              title "Blog Admin Posts Index"
+              title { "Blog Admin Posts Index" }
               meta(charset: "UTF-8")
               meta(name: "viewport", content: "width=device-width, initial-scale=1.0")
 
@@ -47,14 +47,14 @@ module Blog
                   # For editing posts, @method = "patch". Rails sees _method=patch when the controller renders it and treats the request as a PATCH.
 
                   div do
-                    label(for: "post_title", class: "block font-semibold mb-1") { "Title" }
-                    input type: "text", name: "post[title]", id: "post_title",
+                    label(for: "blog_post_title", class: "block font-semibold mb-1") { "Title" }
+                    input type: "text", name: "blog_post[title]", id: "post_title",
                     value: @post.title, class: "w-full border px-3 py-3 py-2 rounded"
                   end
 
                   div do
-                    label(for: post_body, class: "block font-semibold mb-1") { "Body" }
-                    textarea(name: "post[body]", id: "post_body",
+                    label(for: "blog_post_body", class: "block font-semibold mb-1") { "Body" }
+                    textarea(name: "blog_post[body]", id: "post_body",
                     class: "w-full border px-3 py-2 rounded h-64") { @post.body }
                   end
 

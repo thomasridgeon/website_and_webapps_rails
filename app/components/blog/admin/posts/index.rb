@@ -7,10 +7,10 @@ module Blog
           @posts = posts
         end
 
-        def template
+        def view_template
           html do
             head do
-              title "Blog Admin Posts Index"
+              title { "Blog Admin Posts Index" }
               meta(charset: "UTF-8")
               meta(name: "viewport", content: "width=device-width, initial-scale=1.0")
 

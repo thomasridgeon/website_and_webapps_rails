@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_blog_user
   # Even though I'm the only admin user, we still need to know “Am I logged in?” and “Who am I?” for each request. So:
   def current_blog_user
-    return unless session [ :blog_user_id ]
+    return unless session[:blog_user_id]
     @current_blog_user ||= BlogUser.find_by(id: session[:blog_user_id]) # ||= means if @current_blog_user, then it's @current_blog_user. If not, then run the query on the right.
   end
 

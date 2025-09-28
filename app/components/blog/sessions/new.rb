@@ -33,7 +33,7 @@ module Blog
               form(action: blog_login_path, method: "post", class: "mt-8 space-y-6") do
                 div(class: "space-y-4") do
                   div do
-                    label(for: "username", class: "block text-sm font semibold") { "Username" }
+                    label(for: "username", class: "block text-sm font-semibold") { "Username" }
                     input type: "text", name: "username", id: "username", required: true, class: "appearance-none rounded w-full px-3 py-2 border focus:outline-none focus:ring-2 focus:ring-black"
                   end
                   div do

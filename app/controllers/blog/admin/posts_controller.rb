@@ -4,17 +4,18 @@ class Blog::Admin::PostsController < ApplicationController
   before_action :set_post, only: [ :edit, :update, :destroy ]
   # edit, update and destroy need a specific post, so set_post's definition which stores the blog post based on id in an instance variable @post, mneans the action edit, update and destroy can use it.
   def index
-    @posts = Post.order(created_at: :desc) # desc means the created_at column will be ordered in descending order.
+    @posts = BlogPost.order(created_at: :desc) # desc means the created_at column will be ordered in descending order.
     render Blog::Admin::Posts::Index.new(posts: @posts)
   end
 
   def new
-    @post = Post.new
+    @post = BlogPost.new
     render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_posts_path, method: "post")
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = BlogPost.new(post_params)
+    @post.blog_user = current_blog_user
     if @post.save
       redirect_to blog_admin_posts_path, notice: "Post created!"
     else
@@ -42,11 +43,11 @@ class Blog::Admin::PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = BlogPost.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:blog_post).permit(:title, :body)
   end
 
   def authenticate_blog_admin!
