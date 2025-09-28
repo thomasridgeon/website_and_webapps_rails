@@ -23,7 +23,7 @@ class Blog::Admin::PostsController < ApplicationController
   end
 
   def edit
-    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_path(@post), method: "patch")
+    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post), method: "patch")
   end
 
   def update
