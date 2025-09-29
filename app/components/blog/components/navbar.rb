@@ -11,10 +11,10 @@ module Blog
             end
           end
 
-          # Hamburger button (mobile only)
+          # Hamburger button (mobile only- mobile_menu_toggle.js in app/javascript)
           button(
-            class: "md:hidden focus:outline-none",
-            **{ onclick: "document.getElementById('mobile-menu').classList.toggle('hidden')" }
+            id: "mobile-toggle",
+            class: "md:hidden focus:outline-none"
           ) do
             raw <<-SVG.html_safe
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
