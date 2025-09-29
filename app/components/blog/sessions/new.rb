@@ -22,6 +22,7 @@ module Blog
           end
 
           body(class: "bg-white text-black min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8") do
+            render Blog::Components::Navbar.new
             main(class: "max-w-md w-full space-y-8") do
               if flash[:alert]
                 div(class: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded") do

@@ -55,6 +55,7 @@ class Home < Erector::Widget
           div(class: "hidden md:flex space-x-6") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
             a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
         end
@@ -65,6 +66,7 @@ class Home < Erector::Widget
           div(class: "flex flex-col space-y-4 text-center") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
             a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
         end

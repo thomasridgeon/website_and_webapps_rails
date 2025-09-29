@@ -26,6 +26,7 @@ module Blog
           end
 
           body(class: "bg-white text-black px-4 sm:px-6 lg:px-8") do
+            render Blog::Components::Navbar.new
             main(class: "max-w-3xl mx-auto pt-20") do
               h1(class: "text-3xl sm:text-5xl font bold mb-6") { @post.title }
               p(class: "text-sm sm:text-base text-gray-500 mb-8") { @post.created_at.strftime("%B %d %Y") }
