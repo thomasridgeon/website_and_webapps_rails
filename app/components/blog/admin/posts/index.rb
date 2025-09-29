@@ -27,7 +27,6 @@ module Blog
             end
 
             body(class: "bg-white text-black px-4 sm:px-6 lg:px-8 min-h-screen") do
-              render Blog::Components::Navbar.new
               main(class: "max-w-4xl mx-auto pt-20") do
                 h1(class: "text-4xl sm:text-5xl font-bold mb-8 text-center") { "Admin Blog Posts" }
 

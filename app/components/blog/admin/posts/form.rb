@@ -28,7 +28,6 @@ module Blog
             end
 
             body(class: "bg-white text-black px-4 sm:px-6 lg:px-8 min-h-screen") do
-              render Blog::Components::Navbar.new
               main(class: "max-w-3xl mx-auto pt-28") do
                 h1(class: "text-4xl sm:text-5xl font-bold mb-6") { @post.new_record? ? "New Post" : "Edit Post" }
                 # @post is an ActiveRecord model. @post.new_record? is a method which returns true if the object hasn't been saved to the data base or false if the objject is already persisted.
