@@ -11,6 +11,12 @@ class BrokerToolkitCalculations
   COLLECT_FREIGHT_RATE = 2.02768
   FX_CHARGE_RATE = 0.02
 
+  GALLONS_TO_LITRES = 3.785412
+
+  BDFT_TO_CUBICMT = 0.0023622
+
+  LLBS_TO_KGS = 0.4536
+
   def initialize(params)
     @calculator_type = params[:calculator_type]
     @params = params
@@ -22,6 +28,12 @@ class BrokerToolkitCalculations
       currency_conversion(@params[:currency], @params[:amount])
     when "collectfreight"
       collectfreight_calculation(@params[:amount])
+    when "gallons"
+      gallons_conversion(@params[:amount])
+    when "BDFT"
+      bdft_conversion(@params[:amount])
+    when "LLBS"
+      llbs_conversion(@params[:amount])
     end
   end
 
@@ -44,5 +56,11 @@ class BrokerToolkitCalculations
       bbd_collect: "BBD $#{bbd_collect}",
       fx_charge: "BBD $#{fx_charge}"
     }
+  end
+
+  def gallons_conversion(amount)
+    amount = amount.to_f
+    litres = (amount * GALLONS_TO_LITRES).round(2)
+    "Customs litres = #{litres}"
   end
 end
