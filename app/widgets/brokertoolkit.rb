@@ -106,6 +106,93 @@ class Brokertoolkit < Erector::Widget
                 p(class: "text-xl font-semibold text-center") { text @result }
             end # closes if/else for result type
           end
+
+          # ========================================
+          # ---Card 3: gallons to customs litres----
+          # ========================================
+          div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
+            h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
+              text "Gallons to Customs Litres"
+            end
+
+            form(action: "/brokertoolkit", method: "post") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+              input type: "hidden", name: "calculator_type", value: "gallons"
+
+              div(class: "mb-6") do
+                label("Gallons:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
+                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+              end
+
+              div(class: "mb-6") do
+                input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
+              end
+            end
+            if defined?(@result) && @result.present? && @calculator_type == "gallons"
+              div(class: "mt-4 text-center") do
+                h3(class: "text-lg font-bold mb-2") { text @result }
+              end
+            end
+          end
+
+          # ========================================
+          # ---Card 3: ---bdft to cubicmt----------
+          # ========================================
+          div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
+            h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
+              text "Board Feet to Cubic Metres"
+            end
+
+            form(action: "/brokertoolkit", method: "post") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+              input type: "hidden", name: "calculator_type", value: "BDFT"
+
+              div(class: "mb-6") do
+                label("BDFT:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
+                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+              end
+
+              div(class: "mb-6") do
+                input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
+              end
+            end
+            if defined?(@result) && @result.present? && @calculator_type == "BDFT"
+              div(class: "mt-4 text-center") do
+                h3(class: "text-lg font-bold mb-2") { text @result }
+              end
+            end
+          end
+
+          # ========================================
+          # ---Card 3: ---llbs to kgs---------------
+          # ========================================
+          div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
+            h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
+              text "LLB to KG"
+            end
+
+            form(action: "/brokertoolkit", method: "post") do
+              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+              input type: "hidden", name: "calculator_type", value: "LLBS"
+
+              div(class: "mb-6") do
+                label("LLB:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
+                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+              end
+
+              div(class: "mb-6") do
+                input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
+              end
+            end
+            if defined?(@result) && @result.present? && @calculator_type == "LLBS"
+              div(class: "mt-4 text-center") do
+                h3(class: "text-lg font-bold mb-2") { text @result }
+              end
+            end
+          end
       end # closes body
     end # closes html
   end # closes content method

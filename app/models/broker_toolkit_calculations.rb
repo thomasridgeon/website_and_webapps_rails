@@ -63,4 +63,16 @@ class BrokerToolkitCalculations
     litres = (amount * GALLONS_TO_LITRES).round(2)
     "Customs litres = #{litres}"
   end
+
+  def bdft_conversion(amount)
+    amount = amount.to_f
+    cubicmt = (amount * BDFT_TO_CUBICMT).round(2)
+    "Cubic metres = #{cubicmt}"
+  end
+
+  def llbs_conversion(amount)
+    amount = amount.to_f
+    kgs = (amount * LLBS_TO_KGS).round(2)
+    "Kilograms = #{kgs}"
+  end
 end
