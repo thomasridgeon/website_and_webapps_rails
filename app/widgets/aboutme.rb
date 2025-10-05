@@ -82,13 +82,13 @@ class Aboutme < Erector::Widget
                 text "About Me"
               end
               p(class: "text-base font-medium mb-4") do
-                text "I am currently employed as a Customs Broker, however I am a technology enthusiast and long-time Linux user with a passion for open source software."
+                text "I am currently employed as a Customs Broker, however I am a technology enthusiast with an appreciation for Linux and open source software."
               end
               p(class: "text-base font-medium mb-4") do
-                text 'Using Replit, I "vibe coded" two applications to improve efficiency and accuracy in my work: a container clearance tracking app with detailed analytics to identify process bottlenecks, and a customs broker toolkit that automates complex calculations for charges and customs valuations.'
+                text 'Using Replit, I "vibe coded" two applications to improve efficiency and accuracy in my work: a container clearance tracking app with detailed analytics to identify process bottlenecks, and a customs broker toolkit that automates calculations for charges and customs valuations.'
               end
               p(class: "text-base font-medium mb-4") do
-                text 'What began as "vibe coding" quickly grew into a genuine drive to understand how to build web applications from the ground up. I started with Ruby, guided by Chris Pine’s Learn to Program and supported by LLMs as on-demand coding tutors. My first milestone was recreating an application I had previously built on Replit—this time entirely from scratch in Ruby. From there, I went on to develop another web app and, eventually, this website, all written in Ruby.'
+                text 'What began as "vibe coding" quickly grew into a genuine drive to understand how to build web applications from the ground up. Since July 2025, I have been learning to program using Ruby. This website and the webapps which can be found here are what I have built so far.'
               end
               #---Social Media Icons---
               div(class: "flex space-x-4 mt-6 justify-center md:justify-start") do

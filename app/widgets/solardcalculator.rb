@@ -28,6 +28,8 @@ class Solardcalculator < Erector::Widget
       body(class: "font-sans bg-slate-100 flex justify-center min-h-screen p-5") do
         div(class: "container bg-white p-10 rounded-xl shadow-2xl max-w-lg w-full text-center") do
           h1(class: "text-3xl font-bold text-center text-slate-800 mb-8") { text "Solar D Calculator" }
+          img(src: "/images/solar.png", alt: "solar logo",
+              class: "w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-2 md:mb-0")
 
           if @result_time.nil? # #if nil, this means we will display the form for the initial GET request
 
@@ -105,7 +107,9 @@ class Solardcalculator < Erector::Widget
             p(class: "text-xs text-gray-500 mt-4") do
               text "Primary research sources for this model include:"
               br
+              br
               text "Holick, M. F. (2004). Vitamin D: A new look at the sunshine vitamin. Dermato-Endocrinology, 29(1), 209-218."
+              br
               br
               text "Çakmak, T., Yıldız, R., Usta, G., & Yılmaz, A. E. (2021). Holick's Rule Implementation: Calculation of Produced Vitamin D from Sunlight Based on UV Index, Skin Type, and Area of Sunlight Exposure on the Body. International Journal of Energy Research, 45(13), 19576-19590."
             end

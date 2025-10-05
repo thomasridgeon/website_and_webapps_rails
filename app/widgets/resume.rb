@@ -97,7 +97,7 @@ class Resume < Erector::Widget
                 text "PROFESSIONAL SUMMARY"
               end
               p(class: "text-lg font-normal mt-4") do
-                text "Multidisciplinary professional with a unique blend of experience across logistics, administration, and academic research. Currently working as a Customs Broker. Recognized for a sharp ability to learn, process, and apply information quickly and effectively."
+                text "Multidisciplinary professional with a unique blend of experience across logistics, administration, academic research and health & fitness. Currently working as a Customs Broker. Recognized for a sharp ability to learn, process, and apply information quickly and effectively."
               end
 
               # work experience
