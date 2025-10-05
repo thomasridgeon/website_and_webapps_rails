@@ -43,6 +43,7 @@ module Blog
                         a(href: "/blog/admin/posts/#{post.id}/edit", class: "text-blue-600 hover:underline") { "Edit" }
 
                         form(action: "/blog/admin/posts/#{post.id}", method: "post", class: "inline") do
+                          input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                           input type: "hidden", name: "_method", value: "delete"
                           button(type: "submit", class: "text-red-600 hover:underline") { "Delete" }
                         end

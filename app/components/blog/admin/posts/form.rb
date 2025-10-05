@@ -38,6 +38,7 @@ module Blog
                 # ---Form for Create/Update-----
                 # ==============================
                 form(action: @url, method: "post", class: "space-y-4") do
+                  input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                   if @method != "post"
                     input type: "hidden", name: "_method", value: @method
                   end
@@ -45,6 +46,10 @@ module Blog
                   # method: "post" because browsers only accept the methods POST and GET. So even if we need a PATCH (update), we have to use the Rails workaround:
                   # For new posts, @method = "post" (no hidden field needed).
                   # For editing posts, @method = "patch". Rails sees _method=patch when the controller renders it and treats the request as a PATCH.
+
+                  # The controller decides whether we’re creating or editing by passing url and method into the form.
+                  # The form then builds the correct <form> tag and hidden fields.
+                  # The .new_record? flag tells the form how to label buttons and headers.
 
                   div do
                     label(for: "blog_post_title", class: "block font-semibold mb-1") { "Title" }
@@ -68,7 +73,8 @@ module Blog
                 # ============================================
                 unless @post.new_record?
                   form(action: blog_admin_post_path(@post), method: "post", class: "mt-4") do
-                    input type: "hidden", name: "_method", value: "delete"
+                    input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
+                    input(type: "hidden", name: "_method", value: "delete")
                     button(type: "submit", class: "px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-800 transition") do
                       "Delete Post"
                     end

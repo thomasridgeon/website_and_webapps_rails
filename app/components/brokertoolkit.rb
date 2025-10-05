@@ -1,14 +1,21 @@
-class Brokertoolkit < Erector::Widget
-   needs :result, :controller, :calculator_type
+class Brokertoolkit < Phlex::HTML
+  include Phlex::Rails::Helpers::Routes
 
-  def content
+  def initialize(result:, calculator_type:, currency: nil, amount: nil)
+    @result = result
+    @calculator_type = calculator_type
+    @currency = currency
+    @amount = amount
+  end
+
+  def view_template
     html do
       head do
         meta(charset: "UTF-8")
         meta(name: "viewport", content: "width=device-width, initial-scale=1.0")
         # meta(charset: 'UTF-8'): This line generates the <meta charset="UTF-8"> tag. This is crucial for web browsers to correctly display characters from different languages.
         # meta(name: 'viewport', content: 'width=device-width, initial-scale=1.0'): This generates a meta tag that is essential for making the page responsive and look good on mobile devices. It tells the browser to match the page's width to the device's screen width.
-        title "Customs Broker Toolkit"
+        title { "Customs Broker Toolkit" }
 
         link(rel: "preconnect", href: "https://fonts.googleapis.com")
         link(rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous")
@@ -18,19 +25,16 @@ class Brokertoolkit < Erector::Widget
 
         # ---Custom font CSS------------------------
         style do
-          rawtext <<-CSS
-      html, body {
-        font-family: 'Montserrat', sans-serif !important;
-      }
-          CSS
+          raw "html, body { font-family: 'Montserrat', sans-serif !important; }".html_safe
         end
       end
 
 
       # ---body section-----------
       body(class: "bg-slate-100 min-h-screen p-4 sm:p-8") do
+        render Blog::Components::Navbar.new
         h1(class: "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-slate-800 mt-10 mb-10 md:mb-20") do
-          text "Customs Broker Toolkit"
+          "Customs Broker Toolkit"
         end
 
           # ===================================
@@ -39,38 +43,41 @@ class Brokertoolkit < Erector::Widget
 
           div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
             h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
-              text "Customs Currency Converter"
+              "Customs Currency Converter"
             end
 
-            form(action: "/brokertoolkit", method: "post") do
-              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
-              input type: "hidden", name: "calculator_type", value: "currency"
+            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+              input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
+              input(type: "hidden", name: "calculator_type", value: "currency")
 
               div(class: "mb-6") do
-                label("Select Currency:", for: "currency", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "currency", class: "block text-sm font-medium text-gray-700 mb-2") do
+                  "Select Currency:"
+                end
                   select(id: "currency", name: "currency", required: true,
                        class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500") do
-                  option("Select a currency...", value: "", disabled: true, selected: true)
-                  option "USD"
-                  option "GBP"
-                  option "EUR"
-                  option "XCD"
+                  option(value: "", disabled: true, selected: true) { "Select a currency..." }
+                  option(value: "USD", selected: @currency == "USD") { "USD" }
+                  option(value: "GBP", selected: @currency == "GBP") { "GBP" }
+                  option(value: "EUR", selected: @currency == "EUR") { "EUR" }
+                  option(value: "XCD", selected: @currency == "XCD") { "XCD" }
                 end
               end
 
               div(class: "mb-6") do
-                label("Amount:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "amount", class: "block text-sm font-medium text-gray-700 mb-2") { "Amount:" }
                 input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
-                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+                      value: (@calculator_type == "currency" ? @amount : nil),
+                      class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
               end
 
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-            if defined?(@result) && @result.present? && @calculator_type == "currency"
+            if @calculator_type == "currency" && @result.present?
               div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { text @result }
+                h3(class: "text-lg font-bold mb-2") { @result }
               end
             end
           end
@@ -80,31 +87,34 @@ class Brokertoolkit < Erector::Widget
           # =============================================
           div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
             h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
-              text "Collect Freight Calculator"
+              "Collect Freight Calculator"
             end
 
-            form(action: "/brokertoolkit", method: "post") do
-              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
-              input type: "hidden", name: "calculator_type", value: "collectfreight"
+            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+              input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
+              input(type: "hidden", name: "calculator_type", value: "collectfreight")
 
               div(class: "mb-6") do
-                label("USD Collect Freight:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "amount", class: "block text-sm font-medium text-gray-700 mb-2") { "USD Collect Freight" }
                 input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
-                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+                      value: (@calculator_type == "collectfreight" ? @amount : nil),
+                      class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
               end
 
               div(class: "mb-6") do
                 input(type: "submit", value: "Calculate", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-            if @result.is_a?(Hash) && @calculator_type == "collectfreight"
+            if @calculator_type == "collectfreight"
+              if @result.is_a?(Hash)
                 div(class: "text-center space-y-2") do
-                  p(class: "text-lg font-semibold") { text "Collect Freight: #{@result[:bbd_collect]}" }
-                  p(class: "text-lg font-semibold") { text "FX Charge: #{@result[:fx_charge]}" }
+                  p(class: "text-lg font-semibold") { "Collect Freight: #{@result[:bbd_collect]}" }
+                  p(class: "text-lg font-semibold") { "FX Charge: #{@result[:fx_charge]}" }
                 end
-            elsif @calculator_type == "collectfreight"
-                p(class: "text-xl font-semibold text-center") { text @result }
-            end # closes if/else for result type
+              elsif @result.present?
+                p(class: "text-xl font-semibold text-center") { @result }
+              end # closes if/else for result type
+            end
           end
 
           # ========================================
@@ -112,84 +122,87 @@ class Brokertoolkit < Erector::Widget
           # ========================================
           div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
             h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
-              text "Gallons to Customs Litres"
+              "Gallons to Customs Litres"
             end
 
-            form(action: "/brokertoolkit", method: "post") do
-              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
-              input type: "hidden", name: "calculator_type", value: "gallons"
+            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+              input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
+              input(type: "hidden", name: "calculator_type", value: "gallons")
 
               div(class: "mb-6") do
-                label("Gallons:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "amount", class: "block text-sm font-medium text-gray-700 mb-2") { "Gallons" }
                 input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
-                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+                      value: (@calculator_type == "gallons" ? @amount : nil),
+                      class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
               end
 
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-            if defined?(@result) && @result.present? && @calculator_type == "gallons"
+            if @calculator_type == "gallons" && @result.present?
               div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { text @result }
+                h3(class: "text-lg font-bold mb-2") { @result }
               end
             end
           end
 
           # ========================================
-          # ---Card 3: ---bdft to cubicmt----------
+          # ---Card 4: ---bdft to cubicmt----------
           # ========================================
           div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
             h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
-              text "Board Feet to Cubic Metres"
+              "Board Feet to Cubic Metres"
             end
 
-            form(action: "/brokertoolkit", method: "post") do
-              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
-              input type: "hidden", name: "calculator_type", value: "BDFT"
+            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+              input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
+              input(type: "hidden", name: "calculator_type", value: "BDFT")
 
               div(class: "mb-6") do
-                label("BDFT:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "amount", class: "block text-sm font-medium text-gray-700 mb-2") { "BDFT" }
                 input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
-                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+                      value: (@calculator_type == "BDFT" ? @amount : nil),
+                      class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
               end
 
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-            if defined?(@result) && @result.present? && @calculator_type == "BDFT"
+            if @calculator_type == "BDFT" && @result.present?
               div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { text @result }
+                h3(class: "text-lg font-bold mb-2") { @result }
               end
             end
           end
 
           # ========================================
-          # ---Card 3: ---llbs to kgs---------------
+          # ---Card 5: ---llbs to kgs---------------
           # ========================================
           div(class: "bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl max-w-lg w-full mx-auto mb-8") do
             h2(class: "text-lg sm:text-xl font-semibold text-center text-slate-800 mb-4") do
-              text "LLB to KG"
+              "LLB to KG"
             end
 
-            form(action: "/brokertoolkit", method: "post") do
-              input(type: "hidden", name: "authenticity_token", value: @controller.send(:form_authenticity_token))
+            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+              input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input type: "hidden", name: "calculator_type", value: "LLBS"
 
               div(class: "mb-6") do
-                label("LLB:", for: "amount", class: "block text-sm font-medium text-gray-700 mb-2")
+                label(for: "amount", class: "block text-sm font-medium text-gray-700 mb-2") { "LLB" }
                 input(type: "number", id: "amount", name: "amount", min: "1", step: "0.01", required: true,
-                    class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
+                      value: (@calculator_type == "LLBS" ? @amount : nil),
+                      class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500")
               end
 
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
             end
-            if defined?(@result) && @result.present? && @calculator_type == "LLBS"
+            if @calculator_type == "LLBS" && @result.present?
               div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { text @result }
+                h3(class: "text-lg font-bold mb-2") { @result }
               end
             end
           end

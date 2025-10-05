@@ -32,6 +32,7 @@ module Blog
               h1(class: "text-center text-3xl sm:text-4xl font-bold") { "Admin Login" }
 
               form(action: blog_login_path, method: "post", class: "mt-8 space-y-6") do
+                input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                 div(class: "space-y-4") do
                   div do
                     label(for: "username", class: "block text-sm font-semibold") { "Username" }
