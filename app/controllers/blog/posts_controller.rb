@@ -6,7 +6,7 @@ module Blog
     end
 
     def show
-      post = ::BlogPost.find(params[:id])
+      post = ::BlogPost.find_by!(slug: params[:id]) # params[:id] will not contain the slug
       render Blog::Posts::Show.new(post: post)
     end
   end
