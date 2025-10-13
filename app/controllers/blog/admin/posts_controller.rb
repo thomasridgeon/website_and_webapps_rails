@@ -24,14 +24,14 @@ class Blog::Admin::PostsController < ApplicationController
   end
 
   def edit
-    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post), method: "patch")
+    render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post.id), method: "patch")
   end
 
   def update
     if @post.update(post_params)
       redirect_to blog_admin_posts_path, notice: "Post updated!"
     else
-      render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post), method: "patch")
+      render Blog::Admin::Posts::Form.new(post: @post, url: blog_admin_post_path(@post.id), method: "patch")
     end
   end
 

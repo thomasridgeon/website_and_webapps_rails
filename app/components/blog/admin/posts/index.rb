@@ -30,7 +30,7 @@ module Blog
               main(class: "max-w-4xl mx-auto pt-20") do
                 h1(class: "text-4xl sm:text-5xl font-bold mb-8 text-center") { "Admin Blog Posts" }
 
-                a(href: "/blog/admin/posts/new", class: "inline-block mb-6 px-4 py-2 bg-black text-white font-semibold rounded hover:bg-grey-800 transition") do
+                a(href: new_blog_admin_post_path, class: "inline-block mb-6 px-4 py-2 bg-black text-white font-semibold rounded hover:bg-grey-800 transition") do
                   "New Post"
                 end
 
@@ -40,9 +40,9 @@ module Blog
                       a(href: blog_post_path(post), class: "text-2xl font-semibold hover:text-gray-600") { post.title }
 
                       div(class: "mt-2 sm:mt-0 space-x-2") do
-                        a(href: "/blog/admin/posts/#{post.id}/edit", class: "text-blue-600 hover:underline") { "Edit" }
+                        a(href: edit_blog_admin_post_path(post.id), class: "text-blue-600 hover:underline") { "Edit" }
 
-                        form(action: "/blog/admin/posts/#{post.id}", method: "post", class: "inline") do
+                        form(action: blog_admin_post_path(post.id), method: "post", class: "inline") do
                           input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                           input type: "hidden", name: "_method", value: "delete"
                           button(type: "submit", class: "text-red-600 hover:underline") { "Delete" }

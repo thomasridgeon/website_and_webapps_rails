@@ -37,7 +37,7 @@ module Blog
                 # ==============================
                 # ---Form for Create/Update-----
                 # ==============================
-                form(action: @url, method: "post", class: "space-y-4") do
+                form(action: @post.new_record? ? @url : blog_admin_post_path(@post.id), method: "post", class: "space-y-4") do
                   input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                   if @method != "post"
                     input type: "hidden", name: "_method", value: @method
@@ -72,7 +72,7 @@ module Blog
                 # ---Form for Delete (only for existing posts)
                 # ============================================
                 unless @post.new_record?
-                  form(action: blog_admin_post_path(@post), method: "post", class: "mt-4") do
+                  form(action: blog_admin_post_path(@post.id), method: "post", class: "mt-4") do
                     input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
                     input(type: "hidden", name: "_method", value: "delete")
                     button(type: "submit", class: "px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-800 transition") do
