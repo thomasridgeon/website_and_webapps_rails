@@ -82,13 +82,13 @@ class Aboutme < Erector::Widget
                 text "About Me"
               end
               p(class: "text-base font-medium mb-4") do
-                text "I am currently employed as a Customs Broker, however I am a technology enthusiast with an appreciation for Linux and open source software."
+                text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies."
               end
               p(class: "text-base font-medium mb-4") do
-                text 'Using Replit, I "vibe coded" two applications to improve efficiency and accuracy in my work: a container clearance tracking app with detailed analytics to identify process bottlenecks, and a customs broker toolkit that automates calculations for charges and customs valuations.'
+                text "I currently work as a Customs Broker, but my enduring passion lies in health optimization. Over years of self-directed learning, I've explored how nutrition, metabolism, circadian biology, pharmacology, and behaviour interact to shape health. Building on the research and analytical skills developed through my academic studies, I’ve spent countless hours reviewing primary literature on PubMed and Google Scholar. I am constantly tracking key health markers and experimenting with data-informed strategies to refine and improve them over time."
               end
               p(class: "text-base font-medium mb-4") do
-                text 'What began as "vibe coding" quickly grew into a genuine drive to understand how to build web applications from the ground up. Since July 2025, I have been learning to program using Ruby. This website and the webapps which can be found here are what I have built so far.'
+                text "I'm also a technology enthusiast and hope to combine this interest with my passion for health optimization. I've been teaching myself to program in Ruby - learning by building. I started with practical tools to streamline my work as a customs broker, but my deeper motivation is to create digital health tools to help people make informed, measurable improvements to their health."
               end
               #---Social Media Icons---
               div(class: "flex space-x-4 mt-6 justify-center md:justify-start") do

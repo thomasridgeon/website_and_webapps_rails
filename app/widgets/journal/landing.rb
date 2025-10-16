@@ -36,7 +36,7 @@ class Journal::Landing < Erector::Widget
           img(src: "/images/journal.png", alt: "journal logo",
               class: "w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-2 md:mb-0")
           p(class: "text-base sm:text-lg font-normal mb-10 text-center text-gray-600") do
-            text "A private, encrypted journal that keeps your entries safe with AES-256 encryption- accessible only to you, never exposed to the server."
+            text "A private, encrypted journal that keeps your entries safe with AES-256 encryption- accessible only to you."
           end
           div(class: "flex flex-col items-center") do
             div(class: "mb-4") do

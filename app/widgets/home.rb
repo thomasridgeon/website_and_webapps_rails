@@ -83,7 +83,7 @@ class Home < Erector::Widget
               text "My name is Thomas Ridgeon"
             end
             p(class: "text-base sm:text-lg mb-4 text-left") do
-              text "This is my website where you can read a bit about me and try out some of the web apps I've created while learning to program."
+              text "This is my website where you can read about me, my blog and try out some of the web apps I've created while learning to program in Ruby."
             end
 
             #---Social Media Icons---

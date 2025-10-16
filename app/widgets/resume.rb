@@ -82,8 +82,8 @@ class Resume < Erector::Widget
                 h1(class: "text-5xl md:text-7xl font-bold") do
                   text "Thomas Ridgeon"
                 end
-                p(class: "text-2xl md:text-4xl font-medium mt-8") do
-                  text "Customs Broker"
+                p(class: "text-lg md:text-xl font-medium mt-8") do
+                  text "Health Optimization Enthusiast | Data-Driven Self-Experimenter | Ruby Developer in Progress"
                 end
               end
             end
@@ -97,7 +97,7 @@ class Resume < Erector::Widget
                 text "PROFESSIONAL SUMMARY"
               end
               p(class: "text-lg font-normal mt-4") do
-                text "Multidisciplinary professional with a unique blend of experience across logistics, administration, academic research and health & fitness. Currently working as a Customs Broker. Recognized for a sharp ability to learn, process, and apply information quickly and effectively."
+                text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies."
               end
 
               # work experience
