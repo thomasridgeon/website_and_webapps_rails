@@ -59,8 +59,12 @@ module Blog
 
                   div do
                     label(for: "blog_post_body", class: "block font-semibold mb-1") { "Body" }
-                    textarea(name: "blog_post[body]", id: "post_body",
-                    class: "w-full border px-3 py-2 rounded h-64") { @post.body }
+                    # hidden input required for action_text
+                    input(type: "hidden", id: "blog_post_body", name: "blog_post[body]", value: @post.body.to_s)
+                    # the tric editor:
+                    tag(:trix_editor, input: "blog_post_body", class: "w-full border rounded h-64")
+                    # textarea(name: "blog_post[body]", id: "post_body",
+                    # class: "w-full border px-3 py-2 rounded h-64") { @post.body }
                   end
 
                   button(type: "submit", class: "px-4 py-2 bg-black text-white font-semibold rounded hover:bg-gray-800 transition") do

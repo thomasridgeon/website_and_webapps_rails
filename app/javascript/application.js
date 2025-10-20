@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "mobile_menu_toggle"
+
+import "trix"
+import "@rails/actiontext"

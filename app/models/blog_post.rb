@@ -1,6 +1,7 @@
 class BlogPost < ApplicationRecord
   belongs_to :blog_user
   validates :slug, presence: true, uniqueness: true
+  has_rich_text :body
 
   # automatically generate a slug before validation
   before_validation :generate_slug, on: :create
