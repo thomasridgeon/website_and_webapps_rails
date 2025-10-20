@@ -49,6 +49,12 @@ class Login < Erector::Widget
                     class: "bg-blue-500 text-white font-semibold px-4 py-2 rounded w-full sm:w-auto hover:bg-blue-600 cursor-pointer")
             end
           end
+
+          # signup link
+          div(class: "mt-4 text-center text-gray-700 text-sm") do
+            text "Don't have an account? "
+            a(href: "journal_signup_path", class: "text-blue-500 hover:text-blue-700 font-medium") { text "Signup here" }
+          end
         end
       end
     end

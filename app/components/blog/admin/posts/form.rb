@@ -42,10 +42,12 @@ module Blog
                   if @method != "post"
                     input type: "hidden", name: "_method", value: @method
                   end
-                  # action: @url - where the form will be submitted to comes from the @url instance variable which is defined for each method (index, new, create, edit, update and destroy) in the posts_controller and passed in when the form phlex component is rendered by the controller
+                  # if @post.new_record? is true (meaning this is a new post, not yet saved), it uses @url.
+                  # Otherwise (editing an existing post), it uses the helper blog_admin_post_path(@post.id)- the route for updating an existing post.
+                  # @url - where the form will be submitted to comes from the @url instance variable which is defined for each method (index, new, create, edit, update and destroy) in the posts_controller and passed in when the form phlex component is rendered by the controller
                   # method: "post" because browsers only accept the methods POST and GET. So even if we need a PATCH (update), we have to use the Rails workaround:
                   # For new posts, @method = "post" (no hidden field needed).
-                  # For editing posts, @method = "patch". Rails sees _method=patch when the controller renders it and treats the request as a PATCH.
+                  # If @method does not equal post (!=), such as for editing posts, @method = "patch". Rails sees _method=patch when the controller renders it and treats the request as a PATCH.
 
                   # The controller decides whether we’re creating or editing by passing url and method into the form.
                   # The form then builds the correct <form> tag and hidden fields.
@@ -63,8 +65,6 @@ module Blog
                     input(type: "hidden", id: "blog_post_body", name: "blog_post[body]", value: @post.body.to_s)
                     # the tric editor:
                     tag(:trix_editor, input: "blog_post_body", class: "w-full border rounded h-64")
-                    # textarea(name: "blog_post[body]", id: "post_body",
-                    # class: "w-full border px-3 py-2 rounded h-64") { @post.body }
                   end
 
                   button(type: "submit", class: "px-4 py-2 bg-black text-white font-semibold rounded hover:bg-gray-800 transition") do
