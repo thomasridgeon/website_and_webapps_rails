@@ -53,7 +53,7 @@ class Login < Erector::Widget
           # signup link
           div(class: "mt-4 text-center text-gray-700 text-sm") do
             text "Don't have an account? "
-            a(href: "journal_signup_path", class: "text-blue-500 hover:text-blue-700 font-medium") { text "Signup here" }
+            a(href: "/journal/signup", class: "text-blue-500 hover:text-blue-700 font-medium") { text "Signup here" }
           end
         end
       end
