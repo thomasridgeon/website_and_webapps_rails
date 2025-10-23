@@ -85,10 +85,10 @@ class Aboutme < Erector::Widget
                 text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies."
               end
               p(class: "text-base font-medium mb-4") do
-                text "I currently work as a Customs Broker, but my enduring passion lies in health optimization. Over years of self-directed learning, I've explored how nutrition, metabolism, circadian biology, pharmacology, and behaviour interact to shape health. Building on the research and analytical skills developed through my academic studies, I’ve spent countless hours reviewing primary literature on PubMed and Google Scholar. I am constantly tracking key health markers and experimenting with data-informed strategies to refine and improve them over time."
+                text "My enduring passion lies in health optimization. Over years of self-directed learning, I've explored how nutrition, metabolism, circadian biology, pharmacology, and lifestyle interact to shape human health. Building on the research skills developed through my academic studies, I’ve spent countless hours reviewing primary literature on PubMed and Google Scholar. I am constantly tracking key health markers and experimenting with data-informed strategies to refine and improve them over time."
               end
               p(class: "text-base font-medium mb-4") do
-                text "I'm also a technology enthusiast and hope to combine this interest with my passion for health optimization. I've been teaching myself to program in Ruby - learning by building. I started with practical tools to streamline my work as a customs broker, but my deeper motivation is to create digital health tools to help people make informed, measurable improvements to their health."
+                text "I'm also a technology enthusiast and hope to combine this interest with my passion for health optimization. I've been teaching myself to program in Ruby - learning by building. I started with tools to streamline my work as a customs broker, but my deeper motivation is to create tools to help people make informed, measurable improvements to their health."
               end
               #---Social Media Icons---
               div(class: "flex space-x-4 mt-6 justify-center md:justify-start") do
