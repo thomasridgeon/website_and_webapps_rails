@@ -83,7 +83,7 @@ class Resume < Erector::Widget
                   text "Thomas Ridgeon"
                 end
                 p(class: "text-lg md:text-xl font-medium mt-8") do
-                  text "Health Optimization Enthusiast | Data-Driven Self-Experimenter | Ruby Developer in Progress"
+                  text "Health Optimization Enthusiast | Data-Driven Self-Experimenter | Ruby Hobbyist"
                 end
               end
             end
