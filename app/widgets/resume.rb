@@ -50,7 +50,7 @@ class Resume < Erector::Widget
           # Right Side (desktop menu only)
           div(class: "hidden md:flex space-x-6") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
@@ -61,7 +61,7 @@ class Resume < Erector::Widget
             class: "hidden md:hidden bg-black text-white w-full fixed top-16 left-0 right-0 z-50 px-6 py-4") do
           div(class: "flex flex-col space-y-4 text-center") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
@@ -83,7 +83,7 @@ class Resume < Erector::Widget
                   text "Thomas Ridgeon"
                 end
                 p(class: "text-lg md:text-xl font-medium mt-8") do
-                  text "Health Optimization Enthusiast | Data-Driven Self-Experimenter | Ruby Hobbyist"
+                  text "Health Optimization Enthusiast | Data-Driven Self-Experimenter | Hobbyist Rubyist"
                 end
               end
             end
@@ -97,7 +97,7 @@ class Resume < Erector::Widget
                 text "PROFESSIONAL SUMMARY"
               end
               p(class: "text-lg font-normal mt-4") do
-                text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies."
+                text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies and I am currently preparing to pursue an MSc in Clinical Nutrition."
               end
 
               # work experience

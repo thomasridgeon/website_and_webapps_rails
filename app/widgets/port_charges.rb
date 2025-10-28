@@ -129,7 +129,7 @@ class PortCharges < Erector::Widget
             div(class: "my-8 text-center") do
               a(href: "/projects",
                 class: "inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-base font-bold rounded-lg shadow-md transition-colors duration-300") do
-                text "Return to Projects"
+                text "Return to Web Apps"
               end
             end
 

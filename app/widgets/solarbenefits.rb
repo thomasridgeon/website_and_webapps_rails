@@ -49,7 +49,7 @@ class Solarbenefits < Erector::Widget
           # Right Side (desktop menu only)
           div(class: "hidden md:flex space-x-6") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
         end
@@ -59,7 +59,7 @@ class Solarbenefits < Erector::Widget
             class: "hidden md:hidden bg-black text-white w-full fixed top-16 left-0 right-0 z-40 px-6 py-4") do
           div(class: "flex flex-col space-y-4 text-center") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
         end
@@ -103,7 +103,7 @@ class Solarbenefits < Erector::Widget
             text "Conclusion"
           end
           p(class: "text-base md:text-lg mb-4") do
-            text "Supplements can correct deficiency, but sunlight provides longer-lasting vitamin D, works better across genetic variations, and delivers broader health benefits. For optimal results, aim for safe midday sun exposure (10–15 minutes on arms and legs), adjusted for skin type and location, and consult a healthcare provider for personalized guidance."
+            text "Supplements can correct deficiency, but sunlight provides longer-lasting vitamin D, works better across genetic variations, and delivers broader health benefits. For optimal results, aim for safe midday sun exposure, adjusted for skin type and location, and consult a healthcare provider for personalized guidance."
           end
 
           # References

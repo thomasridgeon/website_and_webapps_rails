@@ -72,18 +72,18 @@ class Solardcalculator < Erector::Widget
                 end # end of skin type field
 
                 p(class: "text-base text-gray-700 mb-4") do
-                  text "Based on your location and the current UV index, let's calculate the amount of time you need in the sun right now to get an optimal daily intake of vitamin D. This estimate assumes you're exposing your face, neck, arms, and legs (like in a T-shirt and shorts)."
+                  text "Based on your location and the current UV index, let's calculate the estimated time required in the sun, as of right now, to get an optimal daily intake of vitamin D. This estimate assumes you're exposing your face, neck, arms, and legs (like in a T-shirt and shorts)."
                 end # if I do not use {} directly with a string, and instead use do, then text, i need to close the text
 
                 button(type: "submit",
                        class: "w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-md transition-colors duration-300") do
-                  text "Calculate Time Required in the Sun"
+                  text "Calculate Estimated Time Required in the Sun"
                 end
               end
             end
           else # else we are on the POST request, so display the results
             p(class: "text-lg font-semibold text-blue-700 mb-6") do
-              text "To get 1,000 IU of Vitamin D, you'll need to be in the sun for:"
+              text "To get 1,000 IU of Vitamin D, it's estiamted that you'll need to be in the sun for:"
             end
             p(class: "text-5xl font-extrabold text-blue-800 mb-6") do
               text "#{format('%.1f', @result_time).to_f} minutes"
@@ -124,7 +124,7 @@ class Solardcalculator < Erector::Widget
           div(class: "my-8 text-center") do
             a(href: "/projects",
               class: "inline-block py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-base font-bold rounded-lg shadow-md transition-colors duration-300") do
-              text "Return to Projects"
+              text "Return to Web Apps"
             end
           end
 

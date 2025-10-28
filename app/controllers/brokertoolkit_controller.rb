@@ -53,6 +53,7 @@ class BrokertoolkitController < ApplicationController
      end
     end
   end
+
   private
 
   def brokertoolkit_params

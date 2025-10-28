@@ -50,7 +50,7 @@ class Projects < Erector::Widget
           # Right Side (desktop menu only)
           div(class: "hidden md:flex space-x-6") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
@@ -61,7 +61,7 @@ class Projects < Erector::Widget
             class: "hidden md:hidden bg-black text-white w-full fixed top-16 left-0 right-0 z-40 px-6 py-4") do
           div(class: "flex flex-col space-y-4 text-center") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
@@ -72,19 +72,19 @@ class Projects < Erector::Widget
 
         div(class: "max-w-2xl p-4 sm:p-6 flex flex-col items-start mx-4 sm:mx-auto") do
           h1(class: "text-3xl sm:text-5xl font-bold mt-24 sm:mt-28 mb-6 sm:mb-10") do
-            text "My Projects"
+            text "My Web Apps"
           end
           a(href: "/portcharges", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
             text "Port Charges Calculator"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "This is the first web app I coded. It's one of the customs broker tools I had originally created with Replit. I then re-wrote it in Ruby. It's an app which I use daily as a customs broker in Barbados to calculate Barbados Port Charges."
+            text "This is the first web app I coded, which I used daily as a customs broker, for calculating Barbados Port Charges."
           end
           a(href: "/solardcalculator", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
             text "Solar D Calculator"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "A web app to tell you the current UV index of the sun in your region as well as calculate, based on your age and skin type, the amount of time you would have to be outside with at least 25% of your body exposed to synthesize an optimum daily amount of vitamin D (1,000 IU)."
+            text "A web app to tell you the current UV index of the sun in your region as well as calculate, based on your age and skin type, the estimated time you would have to be outside with at least 25% of your body exposed to synthesize an optimum daily amount of vitamin D (1,000 IU)."
           end
           a(href: "/journal", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
             text "Encrypted Journal"
@@ -101,7 +101,7 @@ class Projects < Erector::Widget
             text "Customs Broker Toolkit"
           end
           p(class: "text-sm sm:text-base mb-4") do
-            text "A collection of tools which I use daily as a customs broker in Barbados. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
+            text "A collection of tools which I used daily as a customs broker. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
           end
         end
       end

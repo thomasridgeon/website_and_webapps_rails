@@ -29,7 +29,7 @@ class Signup < Erector::Widget
       body(class: "flex items-center justify-center min-h-screen p-4 relative") do
         # top-left link back to projects
         div(class: "absolute top-4 left-4") do
-          a(href: "/projects", class: "text-sm text-gray-800 hover:underline bg-transparent border-0 cursor-pointer") { text "Return to Projects" }
+          a(href: "/projects", class: "text-sm text-gray-800 hover:underline bg-transparent border-0 cursor-pointer") { text "Return to Web Apps" }
         end
         # parent container
         div(class: "w-full max-w-md bg-white p-6 rounded-lg shadow-md") do

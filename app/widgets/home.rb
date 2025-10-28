@@ -54,7 +54,7 @@ class Home < Erector::Widget
           # Right Side (desktop menu only)
           div(class: "hidden md:flex space-x-6") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
@@ -65,7 +65,7 @@ class Home < Erector::Widget
             class: "hidden md:hidden bg-black text-white w-full fixed top-16 left-0 right-0 z-40 px-6 py-4") do
           div(class: "flex flex-col space-y-4 text-center") do
             a(href: "/about", class: "text-lg hover:text-gray-300 transition-colors") { text "About Me" }
-            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Projects" }
+            a(href: "/projects", class: "text-lg hover:text-gray-300 transition-colors") { text "Web Apps" }
             a(href: "/blog/posts", class: "text-lg hover:text-gray-300 transition-colors") { text "Blog" }
             a(href: "/resume", class: "text-lg hover:text-gray-300 transition-colors") { text "Resume" }
           end
