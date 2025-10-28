@@ -22,10 +22,12 @@ Rails.application.routes.draw do
   get "/resume", to: "resume#index"
   get "/solarbenefits", to: "solarbenefits#index"
 
+  # tdee calculator
+  resource :tdee_calculator, only: [ :new, :create ], path: "/tdee"
+
   # portcharges calculator
   resource :portcharges, only: [ :new, :create ] # resource singular, because it's only the one calculator, and only new and create RESTful routes are needed
   get "portcharges", to: "portcharges#new"
-
 
   # solardcalculator
   resource :solardcalculator, only: [ :new, :create ], controller: "solardcalculator"

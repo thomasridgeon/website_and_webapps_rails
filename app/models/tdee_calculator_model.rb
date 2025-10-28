@@ -1,6 +1,6 @@
-class TdeeCalculator
+class TdeeCalculatorModel
   attr_reader :weight, :height, :age, :sex, :activity_level
-  # attr_reader is a shortcut for creating getter methods- methods that allow you to read the value of instance variables from outside the class. 
+  # attr_reader is a shortcut for creating getter methods- methods that allow you to read the value of instance variables from outside the class.
   # This makes these instance varibales above readable from outside the class. So this would make me able to do things like tdee.weight or tdee.age
 
   def initialize(weight:, height:, age:, sex:, activity_level:)
@@ -20,7 +20,7 @@ class TdeeCalculator
     end
 
     multiplier = {
-      "sedentary" => 1,2,
+      "sedentary" => 1.2,
       "light" => 1.375,
       "moderate" => 1.55,
       "very_active" => 1.725,
