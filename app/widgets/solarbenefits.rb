@@ -79,19 +79,19 @@ class Solarbenefits < Erector::Widget
             text "1. Transport and Bioavailability"
           end
           p(class: "text-base md:text-lg mb-4") do
-            text "Sunlight-driven vitamin D₃ binds strongly to vitamin D-binding protein (DBP), giving it longer circulation and more targeted delivery than supplements (Holick et al., 2011; Wacker & Holick, 2013). Supplemental vitamin D₃, absorbed through the gut, binds less to DBP (~60%) and is cleared faster (Haddad et al., 1993). Animal studies confirm that sun-derived vitamin D relies on DBP for full activity, unlike supplements (Safadi et al., 1999)."
+            text "Sun-derived vitamin D₃ binds strongly to vitamin D-binding protein (DBP), giving it longer circulation and more targeted delivery than supplements (Holick et al., 2011; Wacker & Holick, 2013). Supplemental vitamin D₃, absorbed through the gut, binds less to DBP (~60%) and is cleared faster (Haddad et al., 1993). Animal studies confirm that sun-derived vitamin D relies on DBP for full activity, unlike supplements (Safadi et al., 1999)."
           end
           h4(class: "text-lg md:text-xl font-bold my-4") do
             text "2. Genetic Influences on DBP"
           end
           p(class: "text-base md:text-lg mb-4") do
-            text "Variants in the DBP gene (e.g., rs7041, rs4588) can weaken supplement response, with carriers of minor alleles up to six times more likely to show poor response to high-dose vitamin D (Fu et al., 2009; Barry et al., 2014). Sun-derived vitamin D, which uses DBP more efficiently, helps overcome these genetic barriers."
+            text "Variants in the DBP gene can weaken supplement response, with carriers of minor alleles up to six times more likely to show poor response even to high-dose vitamin D (Fu et al., 2009; Barry et al., 2014). Sun-derived vitamin D, which uses DBP more efficiently, helps overcome these genetic barriers."
           end
           h5(class: "text-lg md:text-xl font-bold my-4") do
             text "3. Broader Benefits of Sunlight"
           end
           p(class: "text-base md:text-lg mb-4") do
-            text "Sunlight produces much more than vitamin D. Wunsch and colleagues emphasize that moderate sun exposure provides “full-spectrum” benefits—including nitric oxide release, beta-endorphin production, and circadian regulation, to name a few—that supplements cannot replicate (Baggerly et al., 2015). As a result, sun exposure, independent of vitamin D production, can lower the risk for hypertension, cardiovascular disease, and some cancers (Weller, 2016; Alfredsson, 2020; Hoel et al., 2016). Sunlight also self-regulates vitamin D production, avoiding toxicity risks that can occur with excess supplementation (Holick, 2007; Wacker & Holick, 2013)."
+            text "Sunlight produces much more than vitamin D. Alexander Wunsch and colleagues emphasize that moderate sun exposure provides “full-spectrum” benefits—including nitric oxide release, beta-endorphin production, and circadian regulation, to name a few—that supplements cannot replicate (Baggerly et al., 2015). As a result, independent of vitamin D production, sun exposure can lower the risk for hypertension, cardiovascular disease, and some cancers (Weller, 2016; Alfredsson, 2020; Hoel et al., 2016). Sunlight also self-regulates vitamin D production, avoiding toxicity risks that can occur with excess supplementation (Holick, 2007; Wacker & Holick, 2013)."
           end
           h5(class: "text-lg md:text-xl font-bold my-4") do
             text "Conclusion"
