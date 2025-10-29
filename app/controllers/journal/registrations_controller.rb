@@ -8,9 +8,9 @@ class Journal::RegistrationsController < ApplicationController
 
   # 1. check user limit
   def create
-    if User.count >= 10 # User capital U- this is the class itself. I use this when calling class methods like User.count or User.find
+    if User.count >= 1 # User capital U- this is the class itself. I use this when calling class methods like User.count or User.find
       @error_message = "Sorry, we're not accepting any new signups at the moment"
-      render html: Signup.new(controller: self, error_message: nil).to_html.html_safe
+      render html: Signup.new(controller: self, error_message: @error_message).to_html.html_safe
       return
     end
 

@@ -72,7 +72,7 @@ class Solarbenefits < Erector::Widget
           h1(class: "text-3xl md:text-5xl font-bold mt-20 mb-6") do # h1 only needs a bottom margin to space itself from the paragraphs below.
             text "The Benefits of Sun Exposure"
           end
-          h2(class: "text-lg md:text-xl font-bold my-6") do
+          h2(class: "text-lg md:text-xl font-semibold text-gray-500 my-6") do
             text "Research indicates that vitamin D derived from sunlight exposure surpasses oral supplementation in efficacy due to distinct physiological mechanisms. Here's a clear, concise explanation:"
           end
           h3(class: "text-lg md:text-xl font-bold my-4") do
@@ -91,15 +91,9 @@ class Solarbenefits < Erector::Widget
             text "3. Broader Benefits of Sunlight"
           end
           p(class: "text-base md:text-lg mb-4") do
-            text "Sunlight produces more than vitamin D: nitric oxide (reduces blood pressure by ~2–5 mmHg; Weller, 2016; Alfredsson, 2020), beta-endorphins (enhance mood and immunity), and circadian signals. These lower risks for hypertension, cardiovascular disease, multiple sclerosis, and some cancers (Hoel et al., 2016). Sunlight also self-regulates vitamin D production, avoiding toxicity risks that can occur with excess supplementation (Holick, 2007; Wacker & Holick, 2013)."
+            text "Sunlight produces much more than vitamin D. Wunsch and colleagues emphasize that moderate sun exposure provides “full-spectrum” benefits—including nitric oxide release, beta-endorphin production, and circadian regulation, to name a few—that supplements cannot replicate (Baggerly et al., 2015). As a result, sun exposure, independent of vitamin D production, can lower the risk for hypertension, cardiovascular disease, and some cancers (Weller, 2016; Alfredsson, 2020; Hoel et al., 2016). Sunlight also self-regulates vitamin D production, avoiding toxicity risks that can occur with excess supplementation (Holick, 2007; Wacker & Holick, 2013)."
           end
           h5(class: "text-lg md:text-xl font-bold my-4") do
-            text "4. Insights from Dr. Alexander Wunsch"
-          end
-          p(class: "text-base md:text-lg mb-4") do
-            text "Wunsch and colleagues emphasize that moderate sun exposure provides “full-spectrum” benefits—including nitric oxide release, beta-endorphin production, and circadian regulation—that supplements cannot replicate (Baggerly et al., 2015)."
-          end
-          h6(class: "text-lg md:text-xl font-bold my-4") do
             text "Conclusion"
           end
           p(class: "text-base md:text-lg mb-4") do
