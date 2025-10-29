@@ -1,8 +1,5 @@
 class BrokertoolkitController < ApplicationController
   def new
-    # render html: Brokertoolkit.new(controller: self, result: nil, calculator_type: nil).to_html.html_safe
-    # switching to rendering a phlex component instead of an Erector widget:
-
     # initialize defaults for the form
     result = nil
     calculator_type = nil
@@ -18,9 +15,6 @@ class BrokertoolkitController < ApplicationController
   end
 
   def create
-    # render html: Brokertoolkit.new(controller: self, result: @result, calculator_type: params[:calculator_type]).to_html.html_safe
-    # switching to rendering a phlex componenet instead of an Erector Widget:
-
     # store the result of the strong params method call
     permitted_params = brokertoolkit_params
 
@@ -33,24 +27,37 @@ class BrokertoolkitController < ApplicationController
     calculator = BrokerToolkitCalculations.new(permitted_params)
     result = calculator.calculate
 
-    # render the same component, passing the results and selected values
+    # determine which componenet to render for the targeted turbo stream
+    case calculator_type
+    when "collectfreight"
+      result_component = ToolkitCollectFreightResult.new(result: result)
+    when "currency", "gallons", "BDFT", "LLBS"
+      result_component = ToolkitSimpleResult.new(calculator_type: calculator_type, result: result)
+    else
+      head :unprocessable_entity and return
+    end
+
+    # use render_to_string to get the raw HTML for the turbo stream
+    html_string = render_to_string(result_component)
+
+    # generate target ID for the turbo stream replacement
+    target_id = "result-#{calculator_type.downcase}"
+
     respond_to do |format|
+      format.turbo_stream do
+        # replace only the small result area, avoiding pull page duplication
+        render turbo_stream: turbo_stream.replace(target_id, html: html_string)
+      end
+
       format.html do
+        # for a standard HTML request (non-Turbo), render the full component
         render Brokertoolkit.new(
           result: result,
           calculator_type: calculator_type,
           currency: currency,
           amount: amount
         )
-     end
-     format.turbo_stream do
-       render Brokertoolkit.new(
-        result: result,
-        calculator_type: calculator_type,
-        currency: currency,
-        amount: amount
-       )
-     end
+      end
     end
   end
 

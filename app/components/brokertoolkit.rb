@@ -8,6 +8,20 @@ class Brokertoolkit < Phlex::HTML
     @amount = amount
   end
 
+  # helper method to render the correct result component based on type
+  def render_result_for(type)
+    result_data = (type == @calculator_type) ? @result : nil
+
+    case type
+    when "collectfreight"
+      render ToolkitCollectFreightResult.new(result: result_data)
+    when "currency", "gallons", "BDFT", "LLBS"
+      render ToolkitSimpleResult.new(calculator_type: type, result: result_data)
+    else
+      div(id: "result-#{type.downcase}")
+    end
+  end
+
   def view_template
     html do
       head do
@@ -46,7 +60,7 @@ class Brokertoolkit < Phlex::HTML
               "Customs Currency Converter"
             end
 
-            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+            form(action: brokertoolkit_path, method: "post", data: { turbo_stream: true }) do
               input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input(type: "hidden", name: "calculator_type", value: "currency")
 
@@ -74,11 +88,9 @@ class Brokertoolkit < Phlex::HTML
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-            end
-            if @calculator_type == "currency" && @result.present?
-              div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { @result }
-              end
+
+              # render result component
+              render_result_for("currency")
             end
           end
 
@@ -90,7 +102,7 @@ class Brokertoolkit < Phlex::HTML
               "Collect Freight Calculator"
             end
 
-            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+            form(action: brokertoolkit_path, method: "post", data: { turbo_stream: true }) do
               input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input(type: "hidden", name: "calculator_type", value: "collectfreight")
 
@@ -104,16 +116,9 @@ class Brokertoolkit < Phlex::HTML
               div(class: "mb-6") do
                 input(type: "submit", value: "Calculate", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-            end
-            if @calculator_type == "collectfreight"
-              if @result.is_a?(Hash)
-                div(class: "text-center space-y-2") do
-                  p(class: "text-lg font-semibold") { "Collect Freight: #{@result[:bbd_collect]}" }
-                  p(class: "text-lg font-semibold") { "FX Charge: #{@result[:fx_charge]}" }
-                end
-              elsif @result.present?
-                p(class: "text-xl font-semibold text-center") { @result }
-              end # closes if/else for result type
+
+              # render result componenet
+              render_result_for("collectfreight")
             end
           end
 
@@ -125,7 +130,7 @@ class Brokertoolkit < Phlex::HTML
               "Gallons to Customs Litres"
             end
 
-            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+            form(action: brokertoolkit_path, method: "post", data: { turbo_stream: true }) do
               input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input(type: "hidden", name: "calculator_type", value: "gallons")
 
@@ -139,11 +144,9 @@ class Brokertoolkit < Phlex::HTML
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-            end
-            if @calculator_type == "gallons" && @result.present?
-              div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { @result }
-              end
+
+              # render result componenet
+              render_result_for("gallons")
             end
           end
 
@@ -155,7 +158,7 @@ class Brokertoolkit < Phlex::HTML
               "Board Feet to Cubic Metres"
             end
 
-            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+            form(action: brokertoolkit_path, method: "post", data: { turbo_stream: true }) do
               input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input(type: "hidden", name: "calculator_type", value: "BDFT")
 
@@ -169,11 +172,9 @@ class Brokertoolkit < Phlex::HTML
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-            end
-            if @calculator_type == "BDFT" && @result.present?
-              div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { @result }
-              end
+
+              # render result componenet
+              render_result_for("BDFT")
             end
           end
 
@@ -185,7 +186,7 @@ class Brokertoolkit < Phlex::HTML
               "LLB to KG"
             end
 
-            form(action: brokertoolkit_path, method: "post", data: { turbo: "false" }) do
+            form(action: brokertoolkit_path, method: "post", data: { turbo_stream: true }) do
               input(type: "hidden", name: "authenticity_token", value: view_context.form_authenticity_token)
               input type: "hidden", name: "calculator_type", value: "LLBS"
 
@@ -199,11 +200,9 @@ class Brokertoolkit < Phlex::HTML
               div(class: "mb-6") do
                 input(type: "submit", value: "Convert", class: "w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition duration-200")
               end
-            end
-            if @calculator_type == "LLBS" && @result.present?
-              div(class: "mt-4 text-center") do
-                h3(class: "text-lg font-bold mb-2") { @result }
-              end
+
+              # render result component
+              render_result_for("LLBS")
             end
           end
       end # closes body
