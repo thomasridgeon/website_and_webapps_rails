@@ -82,10 +82,16 @@ class Aboutme < Erector::Widget
                 text "About Me"
               end
               p(class: "text-base font-medium mb-4") do
-                text "I'm a multidisciplinary professional with a unique blend of experience across logistics, administration, academic research, and health & fitness.  I hold a BA (First Class Honours) in Theology and an MPhil (Laudatur) in Religious Studies."
+                text "I was born and raised in Barbados and my path in life has taken some twists and turns. I began in the humanities, completing my BA (First Class Honors) in Theology and then moved to Finland where I completed my MPhil (Laudatur) in Religious Studies. After this, I lived and worked on an organic farm in the Finnish countryside— surrounded by forests, lakes and the rhythmns of the seasons. The experience grounded me, brought me closer to nature, connected me with my own body and changed how I saw myself and the world."
               end
               p(class: "text-base font-medium mb-4") do
-                text "My enduring passion lies in health optimization. Over years of self-directed learning, I've explored how nutrition, circadian biology, and lifestyle interact to shape human health. Building on the research skills developed through my academic studies, I've spent countless hours reviewing primary literature on PubMed and Google Scholar and I'm currently preparing to pursue an MSc in Clinical Nutrition. I am constantly tracking key health markers and experimenting with data-informed strategies to refine and improve them over time."
+                text "During that time, I started to take my physical fitness seriously. When I moved back to the city, I threw myself into training Brazilian Jiu-Jitsu, which quickly become a central part of my life. Eventually I returned home to Barbados to be closer to my family and the sun."
+              end
+              p(class: "text-base font-medium mb-4") do
+                text "Since moving back home, I've worked in a corporate setting as an administrative officer and then a customs broker. While I excelled as a customs broker, and took whatever steps I could to find a balance and mitigate the toll which the corporate environment takes on human health, I realized after a year in that it didn't align with the kind of life I wanted to build for myself. So I made the decision to step away and focus on what truly drives me: nutrition and health."
+              end
+              p(class: "text-base font-medium mb-4") do
+                text "Over years of self-directed learning, I've explored how nutrition, circadian biology, and lifestyle interact to shape human health. I've spent countless hours reviewing primary literature on PubMed and Google Scholar and I'm constantly tracking key health markers and experimenting with data-informed strategies to refine and improve them over time. However, now I am finally pursuing formal education in the field, preparing to do an MSc in Clinical Nutrition."
               end
               p(class: "text-base font-medium mb-4") do
                 text "I'm also a technology enthusiast and long time user of Linux with a strong appreciation for free open source software. Lately I've been teaching myself to program in Ruby —learning by building. I began with tools to streamline my work as a customs broker and progressed onto other apps which I have a use for in my daily life. This website and all of the web apps featured here were written in Ruby"

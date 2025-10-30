@@ -103,6 +103,12 @@ class Projects < Erector::Widget
           p(class: "text-sm sm:text-base mb-4") do
             text "A collection of tools which I used daily as a customs broker. Quickly convert currencies using official Barbados Customs rates, and calculate collect freight along with foreign exchange charges in Barbados dollars."
           end
+          a(href: "/tdee/new", class: "text-lg sm:text-xl font-bold hover:text-gray-300 transition-colours") do
+            text "TDEE Calculator"
+          end
+          p(class: "text-sm sm:text-base mb-4") do
+            text "Calculate your Total Daily Energy Expenditure— find out how many calories your body burns a day. This will tell you what your maintenance is, so that you can then adjust your calorie intake below or above that, depending on whether you want to loose or gain weight."
+          end
         end
       end
     end
